@@ -10,6 +10,5 @@ public class Group {
     public String toString(){
         return groupName;
     }
-
 }
 
