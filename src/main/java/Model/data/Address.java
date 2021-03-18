@@ -7,9 +7,9 @@ public class Address {
     private String city;
     private int postCode;
     private String streetName;
-    private String streetNumber;
+    private int streetNumber;
     private int floorNumber;
-    private String apartmentNumber;
+    private int apartmentNumber;
     private String careOfName;
     private String careOfSurname;
 
@@ -17,9 +17,9 @@ public class Address {
                    String city,
                    int postCode,
                    String streetName,
-                   String streetNumber,
+                   int streetNumber,
                    int floorNumber,
-                   String apartmentNumber,
+                   int apartmentNumber,
                    String careOfName,
                    String careOfSurname) {
         this.id = id;
@@ -39,5 +39,9 @@ public class Address {
                 floorNumber + "," +
                 apartmentNumber + ", " +
                 postCode;
+    }
+
+    public int getId(){
+        return id;
     }
 }
