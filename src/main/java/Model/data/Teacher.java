@@ -2,13 +2,15 @@ package Model.data;
 
 public class Teacher {
 
+    private int id;
     private String prefix;
     private String name;
     private String surname;
     private String phoneNumber;
     private String email;
 
-    public Teacher(String prefix, String name, String surname, String phoneNumber, String email) {
+    public Teacher(int id, String prefix, String name, String surname, String phoneNumber, String email) {
+        this.id = id;
         this.prefix = prefix;
         this.name = name;
         this.surname = surname;

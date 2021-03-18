@@ -1,5 +1,5 @@
 import Controller.Controller;
-import Model.data.Model;
+import Model.Model;
 import View.View;
 
 import java.sql.*;

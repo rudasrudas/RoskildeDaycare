@@ -3,6 +3,7 @@ package Model.data;
 import Model.Model;
 
 public class BankInfo {
+    private int id;
     private String bankName;
     private String accountName;
     private String accountSurname;
@@ -10,7 +11,14 @@ public class BankInfo {
     private int regNumber;
     private String email;
 
-    public BankInfo(String bankName, String accountName, String accountSurname, int accountNumber, int regNumber, String email) {
+    public BankInfo(int id,
+                    String bankName,
+                    String accountName,
+                    String accountSurname,
+                    int accountNumber,
+                    int regNumber,
+                    String email) {
+        this.id = id;
         this.bankName = bankName;
         this.accountName = accountName;
         this.accountSurname = accountSurname;

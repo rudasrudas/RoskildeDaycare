@@ -3,6 +3,7 @@ package Model.data;
 import Model.Model;
 
 public class Address {
+    private int id;
     private String city;
     private int postCode;
     private String streetName;
@@ -12,7 +13,8 @@ public class Address {
     private String careOfName;
     private String careOfSurname;
 
-    public Address(String city,
+    public Address(int id,
+                   String city,
                    int postCode,
                    String streetName,
                    String streetNumber,
@@ -20,6 +22,7 @@ public class Address {
                    String apartmentNumber,
                    String careOfName,
                    String careOfSurname) {
+        this.id = id;
         this.city = city;
         this.postCode = postCode;
         this.streetName = streetName;
