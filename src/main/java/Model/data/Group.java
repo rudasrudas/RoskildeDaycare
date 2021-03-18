@@ -1,4 +1,6 @@
-package Model;
+package Model.data;
+
+import Model.Model;
 
 public class Group {
     private String groupName;

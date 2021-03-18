@@ -1,4 +1,4 @@
-package Model;
+package Model.data;
 
 public class UserAccount {
     private String username;
