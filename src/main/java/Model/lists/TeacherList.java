@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class TeacherList {
     private ArrayList<Teacher> teacherList;
 
-    public TeacherList(Statement statement, GroupList groupList, ){
+    public TeacherList(Statement statement, GroupList groupList, AddressList addressList){
         teacherList = new ArrayList<Teacher>();
 
         try{
@@ -26,7 +26,7 @@ public class TeacherList {
                         groupList.getGroup(GroupID),
                         rs.getString("PhoneNumber"),
                         rs.getString("Email"),
-                        new Address(),
+                        addressList.getAddress(AddressID),
                         new BankInfo());
             }
         }
