@@ -9,7 +9,7 @@ public class Teacher {
     private String phoneNumber;
     private String email;
 
-    public Teacher(int id, String prefix, String name, String surname, String phoneNumber, String email) {
+    public Teacher(int id, String prefix, String name, String surname, Group group, String phoneNumber, String email, Address address, BankInfo bankInfo) {
         this.id = id;
         this.prefix = prefix;
         this.name = name;
