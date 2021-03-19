@@ -9,6 +9,7 @@ public class Child {
     private String dateOfBirth;
     private String sex;
     private String entryDate;
+    private Group group;
     private String activityStatus;
     private String paymentDate;
     private int paymentPeriod;
@@ -22,6 +23,7 @@ public class Child {
                  String dateOfBirth,
                  String sex,
                  String entryDate,
+                 Group group,
                  String activityStatus,
                  String paymentDate,
                  int paymentPeriod,
@@ -34,6 +36,7 @@ public class Child {
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
         this.entryDate = entryDate;
+        this.group = group;
         this.activityStatus = activityStatus;
         this.paymentDate = paymentDate;
         this.paymentPeriod = paymentPeriod;
@@ -54,4 +57,7 @@ public class Child {
                 paymentStatus;
     }
 
+    public int getId(){
+        return id;
+    }
 }

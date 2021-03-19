@@ -33,4 +33,6 @@ public class Parent {
                 phoneNumber + " " +
                 email;
     }
+
+    public int getId(){ return id; }
 }
