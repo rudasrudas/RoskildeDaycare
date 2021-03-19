@@ -1,5 +1,6 @@
 package Model.lists;
 
+import Model.data.Group;
 import Model.data.Parent;
 
 import java.sql.ResultSet;
@@ -24,7 +25,7 @@ public class ParentList {
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
-                        rs.getInt(6),
+                        rs.getString(6),
                         rs.getString(7)
                 ));
             }
@@ -32,6 +33,24 @@ public class ParentList {
         catch(SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public Parent getParent(int id){
+        for(Parent g : parentList){
+            if(g.getId() == id) return g;
+        }
+
+        return null;
+    }
+
+    public String toString(){
+        String result = "";
+
+        for(int i = 0; i < parentList.size(); i++){
+            result += i + ". " + parentList.get(i).toString();
+        }
+
+        return result;
     }
 }
 

@@ -11,7 +11,7 @@ public class TeacherList {
         teacherList = new ArrayList<Teacher>();
 
         try{
-            String sql = "SELECT * FROM roskildedaycare1.class";
+            String sql = "SELECT * FROM roskildedaycare1.teacher";
             ResultSet rs = statement.executeQuery(sql);
 
             while(rs.next()){
