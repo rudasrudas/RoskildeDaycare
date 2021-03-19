@@ -27,6 +27,10 @@ public class BankInfo {
         this.email = email;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String toString(){
         return bankName + " " +
                 accountName + " " +
