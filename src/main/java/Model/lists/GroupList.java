@@ -32,4 +32,14 @@ public class GroupList {
 
         return null;
     }
+
+    public String toString(){
+        String result = "";
+
+        for(int i = 0; i < groupList.size(); i++){
+            result += i + ". " + groupList.get(i).toString();
+        }
+
+        return result;
+    }
 }
