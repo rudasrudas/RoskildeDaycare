@@ -1,6 +1,7 @@
 package Model.lists;
 
 import Model.data.BankInfo;
+import Model.data.Parent;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +26,31 @@ public class BankInfoList {
                         rs.getString(4),
                         rs.getInt(5),
                         rs.getInt(6),
-                        rs.getString(7)));
+                        rs.getInt(7)));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void saveToDatabase(Statement statement){
+        try{
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.bankinfo";
+            statement.executeQuery(sql1);
+
+            for(BankInfo b : bankInfoList) {
+                String sql2 = String.format("INSERT INTO roskildedaycare1.bankinfo (PK_BankInfo, BankName, AccountName, AccountSurname, AccountNumber, RegNumber, KontoNumber)" +
+                                "VALUES (%d, %s, %s, %s, %d, %d, %d)",
+                        b.getId(),
+                        b.getBankName(),
+                        b.getAccountName(),
+                        b.getAccountSurname(),
+                        b.getAccountNumber(),
+                        b.getRegNumber(),
+                        b.getKontoNumber());
+
+                statement.executeQuery(sql2);
             }
         }
         catch(SQLException e){

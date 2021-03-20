@@ -35,6 +35,32 @@ public class TeacherList {
         }
     }
 
+    public void saveToDatabase(Statement statement){
+        try{
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.teacher";
+            statement.executeQuery(sql1);
+
+            for(Teacher t : teacherList) {
+                String sql2 = String.format("INSERT INTO roskildedaycare1.teacher (PK_Teacher, Prefix, TeacherName, TeacherSurname, FK_Group, PhoneNumber, Email, FK_Address, FK_BankInfo)" +
+                                "VALUES (%d, %s, %s, %s, %d, %s, %s, %d, %d)",
+                        t.getId(),
+                        t.getPrefix(),
+                        t.getName(),
+                        t.getSurname(),
+                        t.getGroup().getId(),
+                        t.getPhoneNumber(),
+                        t.getEmail(),
+                        t.getAddress().getId(),
+                        t.getBankInfo().getId());
+
+                statement.executeQuery(sql2);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public String toString(){
         String result = "";
 

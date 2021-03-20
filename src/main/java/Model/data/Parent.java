@@ -8,6 +8,7 @@ public class Parent {
     private String relationship;
     private String phoneNumber;
     private String email;
+    private Address address;
 
     public Parent(int id,
                   String prefix,
@@ -33,6 +34,35 @@ public class Parent {
                 phoneNumber + " " +
                 email;
     }
+    public int getId(){
+        return id;
+    }
 
-    public int getId(){ return id; }
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getRelationship() {
+        return relationship;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
 }

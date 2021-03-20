@@ -33,7 +33,8 @@ public class Address {
         this.careOfSurname = careOfSurname;
     }
 
-    public String toString(){
+
+    public String toString() {
         return streetName + " " +
                 streetNumber + " " +
                 floorNumber + "," +
@@ -41,7 +42,40 @@ public class Address {
                 postCode;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getPostCode() {
+        return postCode;
+    }
+
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public int getStreetNumber() {
+        return streetNumber;
+    }
+
+    public int getFloorNumber() {
+        return floorNumber;
+    }
+
+    public int getApartmentNumber() {
+        return apartmentNumber;
+    }
+
+    public String getCareOfName() {
+        return careOfName;
+    }
+
+    public String getCareOfSurname() {
+        return careOfSurname;
+    }
+
 }

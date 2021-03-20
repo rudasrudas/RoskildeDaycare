@@ -2,6 +2,7 @@ package Model.lists;
 
 import Model.data.Group;
 import Model.data.Parent;
+import Model.data.Teacher;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -29,6 +30,31 @@ public class ParentList {
                         rs.getString(6),
                         rs.getString(7)
                 ));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void saveToDatabase(Statement statement){
+        try{
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.parent";
+            statement.executeQuery(sql1);
+
+            for(Parent p : parentList) {
+                String sql2 = String.format("INSERT INTO roskildedaycare1.parent (PK_Parent, Prefix, ParentName, ParentSurname, Relationship, PhoneNumber, Email, FK_Address)" +
+                                "VALUES (%d, %s, %s, %s, %s, %s, %s, %d)",
+                        p.getId(),
+                        p.getPrefix(),
+                        p.getName(),
+                        p.getSurname(),
+                        p.getRelationship(),
+                        p.getPhoneNumber(),
+                        p.getEmail(),
+                        p.getAddress().getId());
+
+                statement.executeQuery(sql2);
             }
         }
         catch(SQLException e){

@@ -1,6 +1,7 @@
 package Model.lists;
 
 import Model.data.Address;
+import Model.data.BankInfo;
 import Model.data.Group;
 
 import java.sql.ResultSet;
@@ -28,6 +29,32 @@ public class AddressList {
                         rs.getInt("ApartmentNumber"),
                         rs.getString("CareOfName"),
                         rs.getString("CareOfSurname")));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void saveToDatabase(Statement statement){
+        try{
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.address";
+            statement.executeQuery(sql1);
+
+            for(Address a : addressList) {
+                String sql2 = String.format("INSERT INTO roskildedaycare1.address (PK_Address, City, Postcode, StreetName, StreetNumber, FloorNumber, ApartmentNumber, CareOfName, CareOfSurname)" +
+                                "VALUES (%d, %s, %s, %s, %d, %d, %d)",
+                        a.getId(),
+                        a.getCity(),
+                        a.getPostCode(),
+                        a.getStreetName(),
+                        a.getStreetNumber(),
+                        a.getFloorNumber(),
+                        a.getApartmentNumber(),
+                        a.getCareOfName(),
+                        a.getCareOfSurname());
+
+                statement.executeQuery(sql2);
             }
         }
         catch(SQLException e){

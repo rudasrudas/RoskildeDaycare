@@ -25,6 +25,18 @@ public class UserAccount {
         return id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getAuthorisation() {
+        return authorisation;
+    }
+
     public boolean isCorrectPassword(String input) {
         String result = Hashing.sha256()
                 .hashString(input, StandardCharsets.UTF_8)

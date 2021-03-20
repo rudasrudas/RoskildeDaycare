@@ -1,6 +1,7 @@
 package Model.lists;
 
 import Model.data.Group;
+import Model.data.UserAccount;
 
 import java.sql.*;
 import java.util.*;
@@ -18,6 +19,25 @@ public class GroupList {
             while(rs.next()){
                 groupList.add(new Group(rs.getInt("PK_Class"),
                         rs.getString("ClassName")));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void saveToDatabase(Statement statement){
+        try{
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.class";
+            statement.executeQuery(sql1);
+
+            for(Group g : groupList) {
+                String sql2 = String.format("INSERT INTO roskildedaycare1.class (PK_Class, ClassName)" +
+                                "VALUES (%d, %s)",
+                        g.getId(),
+                        g.getGroupName());
+
+                statement.executeQuery(sql2);
             }
         }
         catch(SQLException e){
