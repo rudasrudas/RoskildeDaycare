@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ChildList {
     private ArrayList<Child> childList;
 
-    public ChildList(Statement statement, GroupList groupList, ParentList parentList ){
+    public ChildList(Statement statement, GroupList groupList, ParentList parentList){
         childList = new ArrayList<>();
 
         try{
@@ -23,20 +23,19 @@ public class ChildList {
                 int Parent1ID = rs.getInt("FK_Parent1");
                 int Parent2ID = rs.getInt("FK_Parent2");
 
-
-                        childList.add(new Child(rs.getInt("PK_Child"),
-                        rs.getString("ChildName"),
-                        rs.getString("ChildSurname"),
-                        rs.getString("DateOfBirth"),
-                        rs.getString("Sex"),
-                        rs.getString("EntryDate"),
-                        groupList.getGroup(GroupID),
-                        rs.getString("ActivityStatus"),
-                        rs.getString("PaymentDate"),
-                        rs.getInt("PaymentPeriod"),
-                        rs.getString("PaymentStatus"),
-                        parentList.getParent(Parent1ID),
-                        parentList.getParent(Parent2ID)));
+                childList.add(new Child(rs.getInt("PK_Child"),
+                rs.getString("ChildName"),
+                rs.getString("ChildSurname"),
+                rs.getString("DateOfBirth"),
+                rs.getString("Sex"),
+                rs.getString("EntryDate"),
+                groupList.getGroup(GroupID),
+                rs.getString("ActivityStatus"),
+                rs.getString("PaymentDate"),
+                rs.getInt("PaymentPeriod"),
+                rs.getString("PaymentStatus"),
+                parentList.getParent(Parent1ID),
+                parentList.getParent(Parent2ID)));
             }
         }
         catch(SQLException e){
@@ -45,7 +44,7 @@ public class ChildList {
     }
     private ArrayList<Child> waitingList;
 
-    public ChildList(Statement statement,ParentList parentList){
+    public ChildList(Statement statement, ParentList parentList){
         waitingList = new ArrayList<>();
 
         try{
@@ -56,7 +55,6 @@ public class ChildList {
 
                 int Parent1ID = rs.getInt("FK_Parent1");
                 int Parent2ID = rs.getInt("FK_Parent2");
-
 
                 waitingList.add(new Child(rs.getInt("PK_WaitingList"),
                         rs.getString("ChildName"),

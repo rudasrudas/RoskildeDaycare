@@ -34,4 +34,12 @@ public class TeacherList {
             e.printStackTrace();
         }
     }
-}
+
+    public String toString(){
+        String result = "";
+
+        for (int i = 0; i < teacherList.size(); i++) {
+            result += i + ". " + teacherList.get(i).toString();
+        }
+        return result;
+    }}
