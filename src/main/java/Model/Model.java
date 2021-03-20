@@ -12,7 +12,7 @@ public class Model {
     private UserAccountList userAccountList;
     private TeacherList teacherList;
     private ChildList childList;
-    private ChildList waitingList;
+    private WaitingList waitingList;
 
     public Model(Statement statement){
         groupList = new GroupList(statement);
@@ -23,6 +23,11 @@ public class Model {
         userAccountList = new UserAccountList(statement);
         teacherList = new TeacherList(statement, groupList, addressList, bankInfoList);
         childList = new ChildList(statement, groupList, parentList);
-        waitingList = new ChildList(statement, parentList);
+        waitingList = new WaitingList(statement, parentList);
+    }
+
+    public void saveModel(Statement statement){
+
+        childList.saveToDatabase(statement);
     }
 }

@@ -7,35 +7,34 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ChildList {
-    private ArrayList<Child> childList;
+public class WaitingList {
+    private ArrayList<Child> waitingList;
 
-    public ChildList(Statement statement, GroupList groupList, ParentList parentList){
-        childList = new ArrayList<>();
+    public WaitingList(Statement statement, ParentList parentList){
+        waitingList = new ArrayList<>();
 
         try{
-            String sql = "SELECT * FROM roskildedaycare1.child";
+            String sql = "SELECT * FROM roskildedaycare1.waitinglist";
             ResultSet rs = statement.executeQuery(sql);
 
             while(rs.next()){
 
-                int GroupID = rs.getInt("FK_Group");
                 int Parent1ID = rs.getInt("FK_Parent1");
                 int Parent2ID = rs.getInt("FK_Parent2");
 
-                childList.add(new Child(rs.getInt("PK_Child"),
-                rs.getString("ChildName"),
-                rs.getString("ChildSurname"),
-                rs.getString("DateOfBirth"),
-                rs.getString("Sex"),
-                rs.getString("EntryDate"),
-                groupList.getGroup(GroupID),
-                rs.getString("ActivityStatus"),
-                rs.getString("PaymentDate"),
-                rs.getInt("PaymentPeriod"),
-                rs.getString("PaymentStatus"),
-                parentList.getParent(Parent1ID),
-                parentList.getParent(Parent2ID)));
+                waitingList.add(new Child(rs.getInt("PK_WaitingList"),
+                        rs.getString("ChildName"),
+                        rs.getString("ChildSurname"),
+                        rs.getString("DateOfBirth"),
+                        rs.getString("Sex"),
+                        rs.getString("JoinDate"),
+                        null,
+                        null,
+                        null,
+                        0,
+                        null,
+                        parentList.getParent(Parent1ID),
+                        parentList.getParent(Parent2ID)));
             }
         }
         catch(SQLException e){
@@ -45,12 +44,12 @@ public class ChildList {
 
     public void saveToDatabase(Statement statement){
         try{
-            String sql1 = "TRUNCATE TABLE roskildedaycare1.child";
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.waitinglist";
             statement.executeQuery(sql1);
 
-            for(Child c : childList) {
+            for(Child c : waitingList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.child (PK_Child, ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
-                        "VALUES (%d, %s, %s, %s, %s, %s, %d, %s, %s, %d, %s, %d, %d)",
+                                "VALUES (%d, %s, %s, %s, %s, %s, %d, %s, %s, %d, %s, %d, %d)",
                         c.getId(),
                         c.getName(),
                         c.getSurname(),
@@ -74,7 +73,7 @@ public class ChildList {
     }
 
     public Child getChild(int id){
-        for(Child c : childList){
+        for(Child c : waitingList){
             if(c.getId() == id) return c;
         }
 
@@ -84,8 +83,8 @@ public class ChildList {
     public String toString(){
         String result = "";
 
-        for(int i = 0; i < childList.size(); i++){
-            result += i + ". " + childList.get(i).toString();
+        for(int i = 0; i < waitingList.size(); i++){
+            result += i + ". " + waitingList.get(i).toString();
         }
 
         return result;
