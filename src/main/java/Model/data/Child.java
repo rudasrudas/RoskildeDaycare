@@ -60,4 +60,52 @@ public class Child {
     public int getId(){
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getEntryDate() {
+        return entryDate;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public String getActivityStatus() {
+        return activityStatus;
+    }
+
+    public String getPaymentDate() {
+        return paymentDate;
+    }
+
+    public int getPaymentPeriod() {
+        return paymentPeriod;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public Parent getParent1() {
+        return parent1;
+    }
+
+    public Parent getParent2() {
+        return parent2;
+    }
 }

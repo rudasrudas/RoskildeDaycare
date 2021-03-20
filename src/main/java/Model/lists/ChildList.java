@@ -76,6 +76,36 @@ public class ChildList {
         }
     }
 
+    public void saveToDatabase(Statement statement){
+        try{
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.child";
+            statement.executeQuery(sql1);
+
+            for(Child c : childList) {
+                String sql2 = String.format("INSERT INTO roskildedaycare1.child (PK_Child, ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
+                        "VALUES (%d, %s, %s, %s, %s, %s, %d, %s, %s, %d, %s, %d, %d)",
+                        c.getId(),
+                        c.getName(),
+                        c.getSurname(),
+                        c.getDateOfBirth(),
+                        c.getSex(),
+                        c.getEntryDate(),
+                        c.getGroup().getId(),
+                        c.getActivityStatus(),
+                        c.getPaymentDate(),
+                        c.getPaymentPeriod(),
+                        c.getPaymentStatus(),
+                        c.getParent1().getId(),
+                        c.getParent2().getId());
+
+                statement.executeQuery(sql2);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public Child getChild(int id){
         for(Child c : childList){
             if(c.getId() == id) return c;
