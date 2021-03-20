@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ChildList {
     private ArrayList<Child> childList;
 
-    public ChildList(Statement statement, GroupList groupList, ParentList parentList ){
+    public ChildList(Statement statement, GroupList groupList, ParentList parentList){
         childList = new ArrayList<>();
 
         try{

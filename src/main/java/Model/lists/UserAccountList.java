@@ -39,4 +39,13 @@ public class UserAccountList {
 
         return null;
     }
+
+    public String toString(){
+        String result = "";
+
+        for (int i = 0; i < userAccountList.size(); i++) {
+            result += i + ". " + userAccountList.get(i).toString();
+        }
+        return result;
+    }
 }
