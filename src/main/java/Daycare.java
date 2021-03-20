@@ -6,8 +6,6 @@ import java.sql.*;
 
 public class Daycare {
     public static Model model;
-    public static View view;
-    public static Controller controller;
 
     public static void main(String[] args) {
         String url = "jdbc:mysql://den1.mysql6.gear.host:3306";

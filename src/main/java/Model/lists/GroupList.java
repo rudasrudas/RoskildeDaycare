@@ -3,7 +3,7 @@ package Model.lists;
 import Model.data.Group;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class GroupList {
     private ArrayList<Group> groupList;
@@ -41,5 +41,25 @@ public class GroupList {
         }
 
         return result;
+    }
+
+    public Group selectGroup(Scanner scanner){
+
+        int index;
+
+        do {
+            try {
+                System.out.println("Please select a group: ");
+                System.out.println(toString());
+                index = scanner.nextInt();
+            }
+            catch (Exception e){
+                System.out.println("Input is incorrect. Try again.");
+                index = -1;
+            }
+        }
+        while(index >= 0 && index < groupList.size());
+
+        return groupList.get(index);
     }
 }

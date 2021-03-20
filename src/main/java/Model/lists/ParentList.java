@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ParentList {
 
@@ -51,6 +52,26 @@ public class ParentList {
         }
 
         return result;
+    }
+
+    public Parent selectParent(Scanner scanner){
+
+        int index;
+
+        do {
+            try {
+                System.out.println("Please select a parent: ");
+                System.out.println(toString());
+                index = scanner.nextInt();
+            }
+            catch (Exception e){
+                System.out.println("Input is incorrect. Try again.");
+                index = -1;
+            }
+        }
+        while(index >= 0 && index < parentList.size());
+
+        return parentList.get(index);
     }
 }
 

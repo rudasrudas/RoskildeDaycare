@@ -80,6 +80,10 @@ public class WaitingList {
         return null;
     }
 
+    public void add(Child child){
+        waitingList.add(child);
+    }
+
     public String toString(){
         String result = "";
 

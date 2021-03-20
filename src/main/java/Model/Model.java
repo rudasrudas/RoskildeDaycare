@@ -30,4 +30,36 @@ public class Model {
 
         childList.saveToDatabase(statement);
     }
+
+    public GroupList getGroupList() {
+        return groupList;
+    }
+
+    public AddressList getAddressList() {
+        return addressList;
+    }
+
+    public BankInfoList getBankInfoList() {
+        return bankInfoList;
+    }
+
+    public ParentList getParentList() {
+        return parentList;
+    }
+
+    public UserAccountList getUserAccountList() {
+        return userAccountList;
+    }
+
+    public TeacherList getTeacherList() {
+        return teacherList;
+    }
+
+    public ChildList getChildList() {
+        return childList;
+    }
+
+    public WaitingList getWaitingList() {
+        return waitingList;
+    }
 }
