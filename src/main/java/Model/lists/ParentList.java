@@ -43,9 +43,8 @@ public class ParentList {
             statement.executeQuery(sql1);
 
             for(Parent p : parentList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.parent (PK_Parent, Prefix, ParentName, ParentSurname, Relationship, PhoneNumber, Email, FK_Address)" +
-                                "VALUES (%d, %s, %s, %s, %s, %s, %s, %d)",
-                        p.getId(),
+                String sql2 = String.format("INSERT INTO roskildedaycare1.parent (Prefix, ParentName, ParentSurname, Relationship, PhoneNumber, Email, FK_Address)" +
+                                "VALUES (%s, %s, %s, %s, %s, %s, %d)",
                         p.getPrefix(),
                         p.getName(),
                         p.getSurname(),

@@ -42,9 +42,8 @@ public class AddressList {
             statement.executeQuery(sql1);
 
             for(Address a : addressList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.address (PK_Address, City, Postcode, StreetName, StreetNumber, FloorNumber, ApartmentNumber, CareOfName, CareOfSurname)" +
-                                "VALUES (%d, %s, %s, %s, %d, %d, %d)",
-                        a.getId(),
+                String sql2 = String.format("INSERT INTO roskildedaycare1.address (City, Postcode, StreetName, StreetNumber, FloorNumber, ApartmentNumber, CareOfName, CareOfSurname)" +
+                                "VALUES (%s, %s, %s, %d, %d, %d)",
                         a.getCity(),
                         a.getPostCode(),
                         a.getStreetName(),

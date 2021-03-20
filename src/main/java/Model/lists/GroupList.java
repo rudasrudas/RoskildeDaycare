@@ -32,9 +32,8 @@ public class GroupList {
             statement.executeQuery(sql1);
 
             for(Group g : groupList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.class (PK_Class, ClassName)" +
-                                "VALUES (%d, %s)",
-                        g.getId(),
+                String sql2 = String.format("INSERT INTO roskildedaycare1.class (ClassName)" +
+                                "VALUES (%s)",
                         g.getGroupName());
 
                 statement.executeQuery(sql2);

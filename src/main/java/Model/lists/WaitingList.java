@@ -48,9 +48,8 @@ public class WaitingList {
             statement.executeQuery(sql1);
 
             for(Child c : waitingList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.waitinglist (PK_Child, ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
-                                "VALUES (%d, %s, %s, %s, %s, %s, %d, %s, %s, %d, %s, %d, %d)",
-                        c.getId(),
+                String sql2 = String.format("INSERT INTO roskildedaycare1.waitinglist (ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
+                                "VALUES (%s, %s, %s, %s, %s, %d, %s, %s, %d, %s, %d, %d)",
                         c.getName(),
                         c.getSurname(),
                         c.getDateOfBirth(),

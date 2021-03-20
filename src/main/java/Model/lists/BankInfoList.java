@@ -40,9 +40,8 @@ public class BankInfoList {
             statement.executeQuery(sql1);
 
             for(BankInfo b : bankInfoList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.bankinfo (PK_BankInfo, BankName, AccountName, AccountSurname, AccountNumber, RegNumber, KontoNumber)" +
-                                "VALUES (%d, %s, %s, %s, %d, %d, %d)",
-                        b.getId(),
+                String sql2 = String.format("INSERT INTO roskildedaycare1.bankinfo (BankName, AccountName, AccountSurname, AccountNumber, RegNumber, KontoNumber)" +
+                                "VALUES (%s, %s, %s, %d, %d, %d)",
                         b.getBankName(),
                         b.getAccountName(),
                         b.getAccountSurname(),

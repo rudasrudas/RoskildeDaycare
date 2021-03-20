@@ -41,9 +41,8 @@ public class TeacherList {
             statement.executeQuery(sql1);
 
             for(Teacher t : teacherList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.teacher (PK_Teacher, Prefix, TeacherName, TeacherSurname, FK_Group, PhoneNumber, Email, FK_Address, FK_BankInfo)" +
-                                "VALUES (%d, %s, %s, %s, %d, %s, %s, %d, %d)",
-                        t.getId(),
+                String sql2 = String.format("INSERT INTO roskildedaycare1.teacher (Prefix, TeacherName, TeacherSurname, FK_Group, PhoneNumber, Email, FK_Address, FK_BankInfo)" +
+                                "VALUES (%s, %s, %s, %d, %s, %s, %d, %d)",
                         t.getPrefix(),
                         t.getName(),
                         t.getSurname(),
