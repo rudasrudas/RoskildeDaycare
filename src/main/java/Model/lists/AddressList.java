@@ -42,13 +42,4 @@ public class AddressList {
 
         return null;
     }
-
-    public String toString(){
-        String result = "";
-
-        for (int i = 0; i < addressList.size(); i++) {
-            result += i + ". " + addressList.get(i).toString();
-        }
-        return result;
-    }
 }
