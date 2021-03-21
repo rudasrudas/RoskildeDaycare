@@ -29,13 +29,16 @@ public class UserAccountList {
         }
     }
 
-
     public UserAccount getUserAccount(int id){
         for(UserAccount u : userAccountList){
             if(u.getId() == id) return u;
         }
 
         return null;
+    }
+
+    public void add(UserAccount userAccount){
+        userAccountList.add(userAccount);
     }
 
     public String toString(){

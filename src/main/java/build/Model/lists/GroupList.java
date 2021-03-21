@@ -51,6 +51,10 @@ public class GroupList {
         return null;
     }
 
+    public void add(Group group){
+        groupList.add(group);
+    }
+
     public String toString(){
         String result = "";
 

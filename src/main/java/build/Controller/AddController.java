@@ -8,6 +8,7 @@ import java.util.Scanner;
 import build.Daycare;
 import build.Model.Model;
 import build.Model.data.Child;
+import build.Model.data.Group;
 import build.Model.data.Parent;
 import build.Model.data.UserAccount;
 
@@ -39,7 +40,6 @@ public class AddController extends Controller{
                 parent2);
 
         Daycare.model.getWaitingList().add(child);
-
         System.out.println("Child added to the waiting list");
     }
 
@@ -56,6 +56,17 @@ public class AddController extends Controller{
         }
 
         UserAccount userAccount = new UserAccount(-1, username, password, authorisation);
+        Daycare.model.getUserAccountList().add(userAccount);
         System.out.println("User account registered.");
+    }
+
+    public static void addGroup(){
+        System.out.println("- Adding a group -");
+
+        String name = inputString("Group name: ");
+
+        Group group = new Group(-1, name);
+        Daycare.model.getGroupList().add(group);
+        System.out.println("Group added");
     }
 }
