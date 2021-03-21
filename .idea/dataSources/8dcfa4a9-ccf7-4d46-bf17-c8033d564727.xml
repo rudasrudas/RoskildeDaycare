@@ -927,7 +927,7 @@
     </column>
     <column id="275" parent="231" name="PhoneNumber">
       <Position>6</Position>
-      <DataType>int(8)|0s</DataType>
+      <DataType>varchar(16)|0s</DataType>
     </column>
     <column id="276" parent="231" name="Email">
       <Position>7</Position>
@@ -968,7 +968,7 @@
     </column>
     <column id="284" parent="232" name="PhoneNumber">
       <Position>6</Position>
-      <DataType>int(8)|0s</DataType>
+      <DataType>varchar(16)|0s</DataType>
     </column>
     <column id="285" parent="232" name="Email">
       <Position>7</Position>
@@ -989,7 +989,7 @@
     </key>
     <column id="289" parent="233" name="PK_UserAccount">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>

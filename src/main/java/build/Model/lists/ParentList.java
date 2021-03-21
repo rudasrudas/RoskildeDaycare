@@ -1,8 +1,6 @@
-package Model.lists;
+package build.Model.lists;
 
-import Model.data.Group;
-import Model.data.Parent;
-import Model.data.Teacher;
+import build.Model.data.Parent;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,9 +41,8 @@ public class ParentList {
             statement.executeQuery(sql1);
 
             for(Parent p : parentList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.parent (PK_Parent, Prefix, ParentName, ParentSurname, Relationship, PhoneNumber, Email, FK_Address)" +
-                                "VALUES (%d, %s, %s, %s, %s, %s, %s, %d)",
-                        p.getId(),
+                String sql2 = String.format("INSERT INTO roskildedaycare1.parent (Prefix, ParentName, ParentSurname, Relationship, PhoneNumber, Email, FK_Address)" +
+                                "VALUES (%s, %s, %s, %s, %s, %s, %d)",
                         p.getPrefix(),
                         p.getName(),
                         p.getSurname(),
@@ -83,12 +80,17 @@ public class ParentList {
     public Parent selectParent(Scanner scanner){
 
         int index;
+        String input;
 
         do {
             try {
                 System.out.println("Please select a parent: ");
                 System.out.println(toString());
-                index = scanner.nextInt();
+                input = scanner.nextLine();
+
+                if(input == "") return null;
+
+                index = Integer.valueOf(input);
             }
             catch (Exception e){
                 System.out.println("Input is incorrect. Try again.");
