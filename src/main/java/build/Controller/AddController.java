@@ -19,7 +19,7 @@ public class AddController extends Controller{
         String childName = inputString("Child name: ");
         String childSurname = inputString("Child surname: ");
         String dateOfBirth = inputDate("Date of birth (YYYY-MM-DD): ");
-        String sex = inputString("Child's sex (Male/Female): ");
+        String sex = inputString("Child's sex (Male/Female): ", new String[]{"Male", "Female"});
         String joinDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         Parent parent1 = Daycare.model.getParentList().selectParent(Daycare.scanner);
         Parent parent2 = Daycare.model.getParentList().selectParent(Daycare.scanner);

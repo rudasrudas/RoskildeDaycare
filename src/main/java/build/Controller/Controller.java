@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Controller {
-    public static String inputString(String query){
+    public static String inputString(String query, String[] availableInput){
 
         String result = "";
         boolean sentinel = true;
@@ -20,6 +20,15 @@ public abstract class Controller {
 
                 if(result == "")
                     return null; //If user presses enter without typing anything in, it skips to the next one
+
+                //If there is a set of valid input options, then compare
+                if(availableInput.length != 0){
+                    boolean found = false;
+                    for(int i = 0; i < availableInput.length; i++){
+                        if(availableInput[i].equals(result)) found = true;
+                    }
+                    if(!found) throw new Exception();
+                }
             }
             catch(Exception e){
                 sentinel = true;
@@ -28,6 +37,10 @@ public abstract class Controller {
         }
 
         return result;
+    }
+
+    public static String inputString(String query){
+        return inputString(query, new String[]{});
     }
 
     public static int inputInt(String query, int[] availableInput){
@@ -63,6 +76,10 @@ public abstract class Controller {
         while(sentinel);
 
         return resultInt;
+    }
+
+    public static int inputInt(String query){
+        return inputInt(query, new int[]{});
     }
 
     public static String inputDate(String query){

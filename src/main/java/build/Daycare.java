@@ -26,7 +26,7 @@ public class Daycare {
 
         model = new Model(statement);
         scanner = new Scanner(System.in);
-        addController.registerUser();
+        addController.addChild();
     }
 
     public static Statement connectDB(String url, String user, String password) throws SQLException {
