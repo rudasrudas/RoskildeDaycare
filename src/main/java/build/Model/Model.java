@@ -18,11 +18,11 @@ public class Model {
         groupList = new GroupList(statement);
         addressList = new AddressList(statement);
         bankInfoList = new BankInfoList(statement);
-        parentList = new ParentList(statement);
         userAccountList = new UserAccountList(statement);
 
         teacherList = new TeacherList(statement, groupList, addressList, bankInfoList);
         childList = new ChildList(statement, groupList, parentList);
+        parentList = new ParentList(statement, addressList);
         waitingList = new WaitingList(statement, parentList);
     }
 

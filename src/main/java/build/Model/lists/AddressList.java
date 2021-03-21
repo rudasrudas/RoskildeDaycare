@@ -1,11 +1,13 @@
 package build.Model.lists;
 
 import build.Model.data.Address;
+import build.Model.data.Parent;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AddressList {
     private ArrayList<Address> addressList;
@@ -65,5 +67,39 @@ public class AddressList {
         }
 
         return null;
+    }
+
+    public String toString(){
+        String result = "";
+
+        for (int i = 0; i < addressList.size(); i++) {
+            result += i + ". " + addressList.get(i).toString();
+        }
+        return result;
+    }
+
+    public Address selectAddress(Scanner scanner){
+
+        int index;
+        String input;
+
+        do {
+            try {
+                System.out.println("Please select an address: ");
+                System.out.println(toString());
+                input = scanner.nextLine();
+
+                if(input == "") return null;
+
+                index = Integer.valueOf(input);
+            }
+            catch (Exception e){
+                System.out.println("Input is incorrect. Try again.");
+                index = -1;
+            }
+        }
+        while(index >= 0 && index < addressList.size());
+
+        return addressList.get(index);
     }
 }

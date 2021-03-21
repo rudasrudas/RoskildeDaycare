@@ -16,7 +16,8 @@ public class Parent {
                   String surname,
                   String relationship,
                   String phoneNumber,
-                  String email) {
+                  String email,
+                  Address address) {
         this.id = id;
         this.prefix = prefix;
         this.name = name;
@@ -24,6 +25,7 @@ public class Parent {
         this.relationship = relationship;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.address = address;
     }
 
     public String toString(){

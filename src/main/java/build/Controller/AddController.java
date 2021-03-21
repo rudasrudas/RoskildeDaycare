@@ -11,6 +11,7 @@ import build.Model.data.Child;
 import build.Model.data.Group;
 import build.Model.data.Parent;
 import build.Model.data.UserAccount;
+import build.Model.data.Address;
 
 public class AddController extends Controller{
 
@@ -50,7 +51,7 @@ public class AddController extends Controller{
         String password = hash(inputString("Password: "));
         int authorisation = inputInt("Authorisation level (1 -- Administrator, 2 -- Teacher): ", new int[]{1, 2});
 
-        if(username == "" || password == "" || authorisation < 0){
+        if(username.equals("") || password.equals("") || authorisation < 0){
             System.out.println("Insufficient information. Exiting.");
             return;
         }
@@ -68,5 +69,29 @@ public class AddController extends Controller{
         Group group = new Group(-1, name);
         Daycare.model.getGroupList().add(group);
         System.out.println("Group added");
+    }
+
+    public static void addGuardian(){
+        System.out.println("- Adding a parent/Guardian -");
+
+        String parentPrefix = inputString("Prefix: ");
+        String parentName = inputString("Parent name: ");
+        String parentSurname = inputString("Parent surname: ");
+        String relationship = inputDate("Relationship to child: ");
+        String phoneNumber = inputString("Phone Number: ");
+        String email = inputString("Email Address: ");
+        Address address = Daycare.model.getAddressList().selectAddress(Daycare.scanner);
+
+        Parent parent = new Parent(-1,
+                parentPrefix,
+                parentName,
+                parentSurname,
+                relationship,
+                phoneNumber,
+                email,
+                address);
+
+        Daycare.model.getParentList().add(parent);
+        System.out.println("Child added to the waiting list");
     }
 }
