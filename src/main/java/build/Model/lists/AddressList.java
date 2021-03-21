@@ -1,8 +1,6 @@
-package Model.lists;
+package build.Model.lists;
 
-import Model.data.Address;
-import Model.data.BankInfo;
-import Model.data.Group;
+import build.Model.data.Address;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

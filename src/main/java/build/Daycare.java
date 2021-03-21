@@ -1,28 +1,32 @@
-import Controller.Controller;
-import Model.Model;
-import View.View;
+package build;
+
+import build.Model.Model;
 
 import java.sql.*;
+import build.Controller.*;
+import java.util.*;
 
 public class Daycare {
     public static Model model;
 
-    public static void main(String[] args) {
+    public static AddController addController;
+
+    public static Scanner scanner;
+
+    public static void main(String[] args) throws SQLException{
+        Daycare daycare = new Daycare();
+    }
+
+    public Daycare() throws SQLException{
         String url = "jdbc:mysql://den1.mysql6.gear.host:3306";
         String user = "roskildedaycare1";
         String password = "Kd9el?c~CtQE";
 
-        String sql = "SELECT * FROM roskildedaycare1.class";
-        try {
-            Statement statement = connectDB(url, user, password);
-            ResultSet rs = statement.executeQuery(sql);
-            while (rs.next()){
-                System.out.println(rs.getString("ClassName"));
-            }
-        }
-        catch(SQLException ex){
-            ex.printStackTrace();
-        };
+        Statement statement = connectDB(url, user, password);
+
+        model = new Model(statement);
+        scanner = new Scanner(System.in);
+        addController.registerUser();
     }
 
     public static Statement connectDB(String url, String user, String password) throws SQLException {

@@ -1,11 +1,7 @@
-package Model.lists;
+package build.Model.lists;
 
-import Model.data.Child;
-import Model.data.Group;
-import Model.data.UserAccount;
+import build.Model.data.UserAccount;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,7 +14,7 @@ public class UserAccountList {
         userAccountList = new ArrayList<>();
 
         try{
-            String sql = "SELECT * FROM roskildedaycare1.class";
+            String sql = "SELECT * FROM roskildedaycare1.useraccount";
             ResultSet rs = statement.executeQuery(sql);
 
             while(rs.next()){

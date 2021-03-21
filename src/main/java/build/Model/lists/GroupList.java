@@ -1,7 +1,6 @@
-package Model.lists;
+package build.Model.lists;
 
-import Model.data.Group;
-import Model.data.UserAccount;
+import build.Model.data.Group;
 
 import java.sql.*;
 import java.util.*;

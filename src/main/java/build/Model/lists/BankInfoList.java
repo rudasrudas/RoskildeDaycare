@@ -1,12 +1,10 @@
-package Model.lists;
+package build.Model.lists;
 
-import Model.data.BankInfo;
-import Model.data.Parent;
+import build.Model.data.BankInfo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.*;
-import java.sql.SQLException;
 
 public class BankInfoList {
 

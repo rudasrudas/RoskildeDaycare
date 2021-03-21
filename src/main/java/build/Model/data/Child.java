@@ -1,6 +1,4 @@
-package Model.data;
-
-import Model.Model;
+package build.Model.data;
 
 public class Child {
     private int id;

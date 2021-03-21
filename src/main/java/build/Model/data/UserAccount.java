@@ -1,7 +1,8 @@
-package Model.data;
+package build.Model.data;
 
 import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
+
+import build.Controller.Controller;
 import com.google.common.hash.Hashing;
 
 public class UserAccount {
@@ -38,11 +39,8 @@ public class UserAccount {
     }
 
     public boolean isCorrectPassword(String input) {
-        String result = Hashing.sha256()
-                .hashString(input, StandardCharsets.UTF_8)
-                .toString();
+        String result = Controller.hash(input);
 
-        //TODO: Might need to move the hashing to a common location to be universal
         return result.equals(password);
     }
 }

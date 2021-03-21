@@ -1,6 +1,6 @@
-package Model.lists;
+package build.Model.lists;
 
-import Model.data.*;
+import build.Model.data.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

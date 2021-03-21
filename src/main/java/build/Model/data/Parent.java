@@ -1,27 +1,40 @@
-package Model.data;
+package build.Model.data;
 
-public class Teacher {
-
+public class Parent {
     private int id;
     private String prefix;
     private String name;
     private String surname;
-    private Group group;
+    private String relationship;
     private String phoneNumber;
     private String email;
     private Address address;
-    private BankInfo bankInfo;
 
-    public Teacher(int id, String prefix, String name, String surname, Group group, String phoneNumber, String email, Address address, BankInfo bankInfo) {
+    public Parent(int id,
+                  String prefix,
+                  String name,
+                  String surname,
+                  String relationship,
+                  String phoneNumber,
+                  String email) {
         this.id = id;
         this.prefix = prefix;
         this.name = name;
         this.surname = surname;
+        this.relationship = relationship;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public int getId() {
+    public String toString(){
+        return prefix + ". " +
+                name + " " +
+                surname + " (" +
+                relationship + ") " +
+                phoneNumber + " " +
+                email;
+    }
+    public int getId(){
         return id;
     }
 
@@ -37,8 +50,8 @@ public class Teacher {
         return surname;
     }
 
-    public Group getGroup() {
-        return group;
+    public String getRelationship() {
+        return relationship;
     }
 
     public String getPhoneNumber() {
@@ -51,17 +64,5 @@ public class Teacher {
 
     public Address getAddress() {
         return address;
-    }
-
-    public BankInfo getBankInfo() {
-        return bankInfo;
-    }
-
-    public String toString(){
-        return prefix + " " +
-                name + " " +
-                surname + " " +
-                phoneNumber + " " +
-                email;
     }
 }
