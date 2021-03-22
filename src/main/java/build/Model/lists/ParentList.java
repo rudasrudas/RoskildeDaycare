@@ -1,5 +1,6 @@
 package build.Model.lists;
 
+import build.Model.data.Child;
 import build.Model.data.Parent;
 
 import java.sql.ResultSet;
@@ -12,7 +13,7 @@ public class ParentList {
 
     private ArrayList<Parent> parentList;
 
-    public ParentList(Statement statement){
+    public ParentList(Statement statement, AddressList addressList){
         parentList = new ArrayList<Parent>();
 
         try{
@@ -20,14 +21,17 @@ public class ParentList {
             ResultSet rs = statement.executeQuery(sql);
 
             while(rs.next()){
+
+                int AddressID = rs.getInt("FK_Address");
+
                 parentList.add(new Parent(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7)
-                ));
+                        rs.getString(7),
+                        addressList.getAddress(AddressID)));
             }
         }
         catch(SQLException e){
@@ -65,6 +69,10 @@ public class ParentList {
         }
 
         return null;
+    }
+
+    public void add(Parent parent){
+        parentList.add(parent);
     }
 
     public String toString(){

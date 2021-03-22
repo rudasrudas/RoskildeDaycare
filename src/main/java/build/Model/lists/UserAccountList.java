@@ -1,5 +1,6 @@
 package build.Model.lists;
 
+import build.Model.data.Teacher;
 import build.Model.data.UserAccount;
 
 import java.sql.ResultSet;
@@ -22,6 +23,26 @@ public class UserAccountList {
                         rs.getString("Username"),
                         rs.getString("UserPassword"),
                         rs.getInt("Authorization")));
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void saveToDatabase(Statement statement){
+        try{
+            String sql1 = "TRUNCATE TABLE roskildedaycare1.useraccount";
+            statement.executeQuery(sql1);
+
+            for(UserAccount u : userAccountList) {
+                String sql2 = String.format("INSERT INTO roskildedaycare1.useraccount (Username, UserPassword, Authorization)" +
+                                "VALUES (%s, %s, %s)",
+                        u.getUsername(),
+                        u.getPassword(),
+                        u.getAuthorisation());
+
+                statement.executeQuery(sql2);
             }
         }
         catch(SQLException e){
