@@ -51,7 +51,7 @@ public class UpdateController extends Controller{
                 break;
         }
 
-        System.out.println("Child information updated.");
+        successMessage("Child information updated.");
     }
 
     public static void updateGroup(){
@@ -67,6 +67,6 @@ public class UpdateController extends Controller{
         if(isNull(name)){ return; }
         group.setGroupName(name);
 
-        System.out.println("Group name updated.");
+        successMessage("Group name updated.");
     }
 }

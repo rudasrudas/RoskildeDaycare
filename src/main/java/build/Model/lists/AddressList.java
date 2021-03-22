@@ -130,7 +130,7 @@ public class AddressList {
                 index = -1;
             }
         }
-        while(index >= 0 && index < addressList.size());
+        while(index < 0 || index >= addressList.size());
 
         return addressList.get(index);
     }

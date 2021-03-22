@@ -736,7 +736,7 @@
     <table id="234" parent="3" name="waitinglist"/>
     <column id="235" parent="227" name="PK_Address">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -783,7 +783,7 @@
     </key>
     <column id="245" parent="228" name="PK_BankInfo">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -888,7 +888,7 @@
     </key>
     <column id="267" parent="230" name="PK_Class">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -903,7 +903,7 @@
     </key>
     <column id="270" parent="231" name="PK_Parent">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -933,7 +933,7 @@
     </column>
     <column id="277" parent="231" name="FK_Address">
       <Position>8</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <key id="278" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -942,7 +942,7 @@
     </key>
     <column id="279" parent="232" name="PK_Teacher">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -962,7 +962,7 @@
     </column>
     <column id="283" parent="232" name="FK_Group">
       <Position>5</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <column id="284" parent="232" name="PhoneNumber">
       <Position>6</Position>
@@ -974,11 +974,11 @@
     </column>
     <column id="286" parent="232" name="FK_Address">
       <Position>8</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <column id="287" parent="232" name="FK_BankInfo">
       <Position>9</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <key id="288" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
@@ -1010,7 +1010,7 @@
     </key>
     <column id="294" parent="234" name="PK_WaitingList">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -1041,11 +1041,11 @@
     </column>
     <column id="300" parent="234" name="FK_Parent1">
       <Position>7</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <column id="301" parent="234" name="FK_Parent2">
       <Position>8</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <key id="302" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

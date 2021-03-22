@@ -39,7 +39,7 @@ public class AddController extends Controller {
                 parent2);
 
         Daycare.model.getChildList().add(child);
-        System.out.println("Child added to the system");
+        successMessage("Child added to the system");
     }
 
     public static void addChildToWaitingList() {
@@ -68,7 +68,7 @@ public class AddController extends Controller {
                 parent2);
 
         Daycare.model.getWaitingList().add(child);
-        System.out.println("Child added to the waiting list");
+        successMessage("Child added to the waiting list");
     }
 
     public static void registerUser() {
@@ -85,7 +85,7 @@ public class AddController extends Controller {
 
         UserAccount userAccount = new UserAccount(-1, username, password, authorisation);
         Daycare.model.getUserAccountList().add(userAccount);
-        System.out.println("User account registered.");
+        successMessage("User account registered.");
     }
 
     public static void addGroup() {
@@ -95,7 +95,7 @@ public class AddController extends Controller {
 
         Group group = new Group(-1, name);
         Daycare.model.getGroupList().add(group);
-        System.out.println("Group added");
+        successMessage("Group added");
     }
 
     public static void addGuardian() {
@@ -119,7 +119,7 @@ public class AddController extends Controller {
                 address);
 
         Daycare.model.getParentList().add(parent);
-        System.out.println("Child added to the waiting list");
+        successMessage("Child added to the waiting list");
     }
 
     public static void addTeacher() {
@@ -145,7 +145,7 @@ public class AddController extends Controller {
                 bankInfo);
 
         Daycare.model.getTeacherList().add(teacher);
-        System.out.println("Teacher added to the teacher");
+        successMessage("Teacher registered");
     }
 
     public static void addBankInfo() {
@@ -167,7 +167,7 @@ public class AddController extends Controller {
                 KontoNumber);
 
         Daycare.model.getBankInfoList().add(bankInfo);
-        System.out.println("Your Bank account details have been added");
+        successMessage("Bank account details have been added");
     }
 
     public static void addAddress() {
@@ -194,7 +194,7 @@ public class AddController extends Controller {
 
 
         Daycare.model.getAddressList().add(address);
-        System.out.println("Your address has been added");
+        successMessage("Address has been added");
 
     }
 }

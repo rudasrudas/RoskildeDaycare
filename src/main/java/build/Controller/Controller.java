@@ -2,6 +2,7 @@ package build.Controller;
 
 import build.Daycare;
 import build.Model.data.UserAccount;
+import build.View.View;
 import com.google.common.hash.Hashing;
 
 import java.nio.charset.StandardCharsets;
@@ -124,7 +125,7 @@ public abstract class Controller {
 
     public static boolean isNull(Object o){
         if(o == null){
-            System.out.println("Insufficient information, exiting");
+            errorMessage("Not all necessary information provided.");
             return true;
         }
 
@@ -136,5 +137,25 @@ public abstract class Controller {
         String password = inputString("Password: ");
 
         return Daycare.model.getUserAccountList().findAccount(username, password);
+    }
+
+    public static void successMessage(String text){
+        View.renderBlock("- Success! -");
+
+        System.out.println(text);
+
+        System.out.println();
+        System.out.println("Press Enter to continue...");
+        Daycare.scanner.nextLine();
+    }
+
+    public static void errorMessage(String text){
+        View.renderBlock("- Failure! -");
+
+        System.out.println(text);
+
+        System.out.println();
+        System.out.println("Press Enter to continue...");
+        Daycare.scanner.nextLine();
     }
 }
