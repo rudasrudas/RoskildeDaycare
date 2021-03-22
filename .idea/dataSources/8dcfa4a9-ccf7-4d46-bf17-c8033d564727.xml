@@ -823,7 +823,7 @@
     </key>
     <column id="253" parent="229" name="PK_Child">
       <Position>1</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
@@ -839,8 +839,7 @@
     </column>
     <column id="256" parent="229" name="DateOfBirth">
       <Position>4</Position>
-      <DataType>varchar(8)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(10)|0s</DataType>
     </column>
     <column id="257" parent="229" name="Sex">
       <Position>5</Position>
@@ -849,12 +848,11 @@
     </column>
     <column id="258" parent="229" name="EntryDate">
       <Position>6</Position>
-      <DataType>varchar(8)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(10)|0s</DataType>
     </column>
     <column id="259" parent="229" name="FK_Group">
       <Position>7</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <column id="260" parent="229" name="ActivityStatus">
       <Position>8</Position>
@@ -877,11 +875,11 @@
     </column>
     <column id="264" parent="229" name="FK_Parent1">
       <Position>12</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <column id="265" parent="229" name="FK_Parent2">
       <Position>13</Position>
-      <DataType>int(10) unsigned|0s</DataType>
+      <DataType>int(10)|0s</DataType>
     </column>
     <key id="266" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>

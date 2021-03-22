@@ -67,6 +67,8 @@ public class AddressList {
     public void remove(Address address){ addressList.remove(address); }
 
     public static int locateID(Statement statement, Address address){
+        if(address == null) return -1;
+
         String sql = String.format("SELECT * FROM roskildedaycare1.address WHERE City = %s AND Postcode = %d AND StreetName = %s AND StreetNumber = %d AND FloorNumber = %d AND ApartmentNumber = %d AND CareOfName = %s AND CareOfSurname = %s",
                 address.getCity(),
                 address.getPostCode(),
@@ -103,7 +105,7 @@ public class AddressList {
         String result = "";
 
         for (int i = 0; i < addressList.size(); i++) {
-            result += i + ". " + addressList.get(i).toString();
+            result += i + ". " + addressList.get(i).toString() + "\n";
         }
         return result;
     }

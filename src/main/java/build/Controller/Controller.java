@@ -120,4 +120,13 @@ public abstract class Controller {
 
         return result;
     }
+
+    public static boolean isNull(Object o){
+        if(o == null){
+            System.out.println("Insufficient information, exiting");
+            return true;
+        }
+
+        return false;
+    }
 }

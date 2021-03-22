@@ -50,8 +50,8 @@ public class ChildList {
             statement.executeUpdate(sql1);
 
             for(Child c : childList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.child (ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
-                        "VALUES (%s, %s, %s, %s, %d, %s, %s, %d, %s, %d, %d)",
+                String sql2 = String.format("INSERT INTO roskildedaycare1.child (ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2) VALUES ('%s', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%d', '%s', '%d', '%d')",
+                        c.getName(),
                         c.getSurname(),
                         c.getDateOfBirth(),
                         c.getSex(),
@@ -84,7 +84,7 @@ public class ChildList {
         String result = "";
 
         for(int i = 0; i < childList.size(); i++){
-            result += i + ". " + childList.get(i).toString();
+            result += i + ". " + childList.get(i).toString() + "\n";
         }
 
         return result;

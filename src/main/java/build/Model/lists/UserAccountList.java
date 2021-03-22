@@ -69,7 +69,7 @@ public class UserAccountList {
         String result = "";
 
         for (int i = 0; i < userAccountList.size(); i++) {
-            result += i + ". " + userAccountList.get(i).toString();
+            result += i + ". " + userAccountList.get(i).toString() + "\n";
         }
         return result;
     }

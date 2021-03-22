@@ -67,6 +67,8 @@ public class BankInfoList {
     }
 
     public static int locateID(Statement statement, BankInfo bankInfo){
+        if(bankInfo == null) return -1;
+
         String sql = String.format("SELECT * FROM roskildedaycare1.bankinfo WHERE BankName = %s AND AccountName = %s AND AccountSurname = %s AND AccountNumber = %s AND RegNumber = %s AND KontoNumber = %s",
                 bankInfo.getBankName(),
                 bankInfo.getAccountName(),
@@ -96,7 +98,7 @@ public class BankInfoList {
         String result = "";
 
         for (int i = 0; i < bankInfoList.size(); i++) {
-            result += i + ". " + bankInfoList.get(i).toString();
+            result += i + ". " + bankInfoList.get(i).toString() + "\n";
         }
         return result;
     }

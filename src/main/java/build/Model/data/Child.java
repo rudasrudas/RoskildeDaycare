@@ -44,7 +44,7 @@ public class Child {
     }
 
     public String toString(){
-        return name + ". " +
+        return name + " " +
                 surname + " " +
                 dateOfBirth + " " +
                 sex + " " +
@@ -105,5 +105,57 @@ public class Child {
 
     public Parent getParent2() {
         return parent2;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setEntryDate(String entryDate) {
+        this.entryDate = entryDate;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public void setActivityStatus(String activityStatus) {
+        this.activityStatus = activityStatus;
+    }
+
+    public void setPaymentDate(String paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public void setPaymentPeriod(int paymentPeriod) {
+        this.paymentPeriod = paymentPeriod;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public void setParent1(Parent parent1) {
+        this.parent1 = parent1;
+    }
+
+    public void setParent2(Parent parent2) {
+        this.parent2 = parent2;
     }
 }

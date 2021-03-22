@@ -58,6 +58,8 @@ public class GroupList {
     public void remove(Group group){ groupList.remove(group); }
 
     public static int locateID(Statement statement, Group group){
+        if(group == null) return -1;
+
         String sql = String.format("SELECT * FROM roskildedaycare1.class WHERE ClassName = %s",
                 group.getGroupName());
         try{
@@ -79,7 +81,7 @@ public class GroupList {
         String result = "";
 
         for(int i = 0; i < groupList.size(); i++){
-            result += i + ". " + groupList.get(i).toString();
+            result += i + ". " + groupList.get(i).toString() + "\n";
         }
 
         return result;

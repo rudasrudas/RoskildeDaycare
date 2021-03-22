@@ -30,8 +30,9 @@ public class Daycare {
         model = new Model(statement);
         scanner = new Scanner(System.in);
         addController.addChild();
-        model.saveModel(statement);
+
         removeController.removeChild();
+        model.saveModel(statement);
 
     }
 

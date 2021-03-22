@@ -71,7 +71,7 @@ public class TeacherList {
         String result = "";
 
         for (int i = 0; i < teacherList.size(); i++) {
-            result += i + ". " + teacherList.get(i).toString();
+            result += i + ". " + teacherList.get(i).toString() + "\n";
         }
         return result;
     }

@@ -82,13 +82,15 @@ public class ParentList {
         String result = "";
 
         for(int i = 0; i < parentList.size(); i++){
-            result += i + ". " + parentList.get(i).toString();
+            result += i + ". " + parentList.get(i).toString() + "\n";
         }
 
         return result;
     }
 
     public static int locateID(Statement statement, Parent parent){
+        if(parent == null) return -1;
+
         String sql = String.format("SELECT * FROM roskildedaycare1.parent WHERE Prefix = %s AND ParentName = %s AND ParentSurname = %s AND Relationship = %s AND PhoneNumber = %s AND Email = %s",
                 parent.getPrefix(),
                 parent.getName(),

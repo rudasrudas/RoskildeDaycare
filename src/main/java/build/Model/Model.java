@@ -21,8 +21,8 @@ public class Model {
         userAccountList = new UserAccountList(statement);
 
         teacherList = new TeacherList(statement, groupList, addressList, bankInfoList);
-        childList = new ChildList(statement, groupList, parentList);
         parentList = new ParentList(statement, addressList);
+        childList = new ChildList(statement, groupList, parentList);
         waitingList = new WaitingList(statement, parentList);
     }
 

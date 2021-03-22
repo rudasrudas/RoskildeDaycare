@@ -18,6 +18,7 @@ public class RemoveController extends Controller {
         String confirmation = inputString("Are you sure you want to remove the following child from the system (Yes/No)?\n" + child + "\n", new String[]{"Yes", "No"});
         if(confirmation.equals("Yes")){
             Daycare.model.getChildList().remove(child);
+            System.out.println("Child removed from the waiting list");
         }
     }
 
@@ -34,6 +35,7 @@ public class RemoveController extends Controller {
         String confirmation = inputString("Are you sure you want to remove the following child from the waiting list (Yes/No)?\n" + child + "\n", new String[]{"Yes", "No"});
         if(confirmation.equals("Yes")){
             Daycare.model.getChildList().remove(child);
+            System.out.println("Child removed from the waiting list");
         }
     }
 }

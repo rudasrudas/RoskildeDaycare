@@ -91,7 +91,7 @@ public class WaitingList {
         String result = "";
 
         for(int i = 0; i < waitingList.size(); i++){
-            result += i + ". " + waitingList.get(i).toString();
+            result += i + ". " + waitingList.get(i).toString() + "\n";
         }
 
         return result;
