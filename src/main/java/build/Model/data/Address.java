@@ -76,4 +76,39 @@ public class Address {
         return careOfSurname;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setPostCode(int postCode) {
+        this.postCode = postCode;
+    }
+
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
+    }
+
+    public void setStreetNumber(int streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public void setFloorNumber(int floorNumber) {
+        this.floorNumber = floorNumber;
+    }
+
+    public void setApartmentNumber(int apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
+
+    public void setCareOfName(String careOfName) {
+        this.careOfName = careOfName;
+    }
+
+    public void setCareOfSurname(String careOfSurname) {
+        this.careOfSurname = careOfSurname;
+    }
 }

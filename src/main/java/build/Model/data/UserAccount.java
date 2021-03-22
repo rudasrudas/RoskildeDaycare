@@ -43,4 +43,20 @@ public class UserAccount {
 
         return result.equals(password);
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAuthorisation(int authorisation) {
+        this.authorisation = authorisation;
+    }
 }

@@ -52,4 +52,20 @@ public class UpdateController extends Controller{
 
         System.out.println("Child information updated.");
     }
+
+    public static void updateGroup(){
+        System.out.println("- Updating group information -");
+
+        Group group = Daycare.model.getGroupList().select(Daycare.scanner);
+
+        if(isNull(group)){ return; }
+
+        System.out.println("You can only change the group name.");
+
+        String name = inputString("New group name: ");
+        if(isNull(name)){ return; }
+        group.setGroupName(name);
+
+        System.out.println("Group name updated.");
+    }
 }

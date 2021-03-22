@@ -61,4 +61,32 @@ public class BankInfo {
                 regNumber + " " +
                 kontoNumber;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public void setAccountSurname(String accountSurname) {
+        this.accountSurname = accountSurname;
+    }
+
+    public void setAccountNumber(int accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public void setRegNumber(int regNumber) {
+        this.regNumber = regNumber;
+    }
+
+    public void setKontoNumber(int kontoNumber) {
+        this.kontoNumber = kontoNumber;
+    }
 }

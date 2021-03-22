@@ -64,4 +64,40 @@ public class Teacher {
                 phoneNumber + " " +
                 email;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setBankInfo(BankInfo bankInfo) {
+        this.bankInfo = bankInfo;
+    }
 }

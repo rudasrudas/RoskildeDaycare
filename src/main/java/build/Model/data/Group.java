@@ -22,5 +22,12 @@ public class Group {
         return groupName;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
 }
 
