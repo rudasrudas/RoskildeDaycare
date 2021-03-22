@@ -77,7 +77,7 @@ public class AddController extends Controller{
         String parentPrefix = inputString("Prefix: ");
         String parentName = inputString("Parent name: ");
         String parentSurname = inputString("Parent surname: ");
-        String relationship = inputDate("Relationship to child: ");
+        String relationship = inputString("Relationship to child: ");
         String phoneNumber = inputString("Phone Number: ");
         String email = inputString("Email Address: ");
         Address address = Daycare.model.getAddressList().selectAddress(Daycare.scanner);
@@ -94,4 +94,34 @@ public class AddController extends Controller{
         Daycare.model.getParentList().add(parent);
         System.out.println("Child added to the waiting list");
     }
+
+    public static void addTeacher(){
+        System.out.println("- Adding a teacher -");
+
+        String teacherPrefix = inputString("Prefix: ");
+        String teacherName = inputString("Teacher name: ");
+        String teacherSurname = inputString("Teacher surname: ")
+        Group group = Daycare.model.getGroupList().selectGroup(Daycare.scanner);
+        String phoneNumber = inputString("Phone Number: ");
+        String email = inputString("Email Address: ");
+        Address address = Daycare.model.getAddressList().selectAddress(Daycare.scanner);
+        BankInfo bankInfo = Daycare.model.getBankInfoList().selectBankInfo(Daycare.scanner);
+
+        Teacher teacher = new Teacher(-1,
+                teacherPrefix,
+                teacherName,
+                teacherSurname,
+                group,
+                phoneNumber,
+                email,
+                address,
+                bankInfo);
+
+        Daycare.model.getTeacherList().add(teacher);
+        System.out.println("Teacher added to the teacher");
+
+
+
+    }
+
 }

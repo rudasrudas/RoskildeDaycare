@@ -128,7 +128,7 @@ public class ParentList {
                 index = -1;
             }
         }
-        while(index < 0 && index >= parentList.size());
+        while(index < 0 || index >= parentList.size());
 
         return parentList.get(index);
     }

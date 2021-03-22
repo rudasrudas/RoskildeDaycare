@@ -60,6 +60,10 @@ public class TeacherList {
         }
     }
 
+    public void add(Teacher teacher){
+        teacherList.add(teacher);
+    }
+
     public String toString(){
         String result = "";
 
