@@ -6,6 +6,11 @@ import java.sql.*;
 
 public class View {
 
+    public static void clearScreen(){
+        for(int i = 0; i < 30; i++)
+            System.out.println();
+    }
+
     public static void renderButton(String text, int index){
         int blockWidth = 35; //width of the block in symbols
 
@@ -88,9 +93,9 @@ public class View {
 
         int[] accessLevels = {1, 2, 1, 2, 2};
 
-        int result = createMenuInput(actions, accessLevels, 2);
+        clearScreen();
 
-        switch(result){
+        switch(createMenuInput(actions, accessLevels, 2)){
             case 0 -> viewAddMenu();
             case 1 -> viewUpdateMenu();
             case 2 -> viewRemoveMenu();
@@ -111,9 +116,9 @@ public class View {
 
         int[] accessLevels = {0, 1, 1, 0, 1, 0, 2};
 
-        int result = createMenuInput(actions, accessLevels, 2);
+        clearScreen();
 
-        switch(result){
+        switch(createMenuInput(actions, accessLevels, 2)){
             case 0 -> Daycare.addController.registerUser();
             case 1 -> Daycare.addController.addChild();
             case 2 -> Daycare.addController.addGuardian();
@@ -125,7 +130,28 @@ public class View {
     }
 
     public static void viewUpdateMenu(){
+        String[] actions = {
+                "Accept child",
+                "Update child information",
+                "Update guardian information",
+                "Update teacher information",
+                "Update group information",
+                "Update account information",
+                "Return"};
 
+        int[] accessLevels = {1, 2, 2, 0, 0, 0, 2};
+
+        clearScreen();
+
+        switch(createMenuInput(actions, accessLevels, 2)){
+            //case 0 -> Daycare.updateController.acceptChild();
+            case 1 -> Daycare.updateController.updateChild();
+            //case 2 -> Daycare.updateController.updateGuardian();
+            //case 3 -> Daycare.updateController.updateTeacher();
+            case 4 -> Daycare.updateController.updateGroup();
+            //case 5 -> Daycare.updateController.updateUser();
+            case 6 -> viewMainMenu();
+        }
     }
 
     public static void viewRemoveMenu(){
