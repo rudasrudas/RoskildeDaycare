@@ -1,6 +1,7 @@
 package build.Controller;
 
 import build.Daycare;
+import build.Model.data.UserAccount;
 import com.google.common.hash.Hashing;
 
 import java.nio.charset.StandardCharsets;
@@ -128,5 +129,12 @@ public abstract class Controller {
         }
 
         return false;
+    }
+
+    public static UserAccount logIn(){
+        String username = inputString("Username: ");
+        String password = inputString("Password: ");
+
+        return Daycare.model.getUserAccountList().findAccount(username, password);
     }
 }

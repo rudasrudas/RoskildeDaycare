@@ -65,6 +65,16 @@ public class UserAccountList {
         userAccountList.remove(userAccount);
     }
 
+    public UserAccount findAccount(String username, String password){
+        for(UserAccount u : userAccountList){
+            if(u.isCorrectPassword(password) && u.getUsername().equals(username)){
+                return u;
+            }
+        }
+
+        return null;
+    }
+
     public String toString(){
         String result = "";
 
