@@ -124,4 +124,51 @@ public class AddController extends Controller{
 
     }
 
+    public static void addBankInfo(){
+        System.out.println("- Adding bank details -");
+
+        BankInfo bankInfo = Daycare.model.getBankInfoList().selectBankInfo(Daycare.scanner);
+        String BankName = inputString("Bank name: ");
+        String AccountName = inputString("Account first name: ");
+        String AccountSurname = inputString("Account surname: ");
+        String AccountNumber = inputString("Account number: ");
+        String RegNumber = inputString("Registry number: ");
+        String KontoNumber = inpurtString("Konto number: ");
+
+        BankInfo bankInfo = new BankInfo(-1,
+                BankName,
+                AccountName,
+                AccountSurname,
+                AccountNumber,
+                RegNumber,
+                KontoNumber);
+
+        Daycare.model.getTeacherList().add(bankInfo);
+        System.out.println("Your Bank account details have been added");
+
 }
+    public static void addAddress(){
+        System.out.println("- Adding Address -");
+
+        Address address = Daycare.model.getAddressList().selectAddress(Daycare.scanner);
+        String city = inputString("City name: ")
+        String postcode = inputString("postcode: ")
+        String StreetName = inputString("Street name: ");
+        String StreetNumber = inputString("Street Number: ");
+        String CareOfName = inputString("Care of (first name): ");
+        String CareOfSurename = inputString("Care of (second name): ");
+
+        Address address = new Adress(-1,
+                address,
+                city,
+                postcode,
+                StreetName,
+                StreetNumber,
+                CareOfName,
+                CareOfSurename);
+
+
+        Daycare.model.getAddressList().add(address);
+        System.out.println("Your address has been added");
+
+    }
