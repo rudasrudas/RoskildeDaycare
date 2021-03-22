@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UserAccountList {
     private ArrayList<UserAccount> userAccountList;
@@ -82,5 +83,30 @@ public class UserAccountList {
             result += i + ". " + userAccountList.get(i).toString() + "\n";
         }
         return result;
+    }
+
+    public UserAccount select(Scanner scanner){
+
+        int index;
+        String input;
+
+        do {
+            try {
+                System.out.println("Please select a User Account: ");
+                System.out.println(toString());
+                input = scanner.nextLine();
+
+                if(input.equals("")) return null;
+
+                index = Integer.valueOf(input);
+            }
+            catch (Exception e){
+                System.out.println("Input is incorrect. Try again.");
+                index = -1;
+            }
+        }
+        while(index < 0 || index >= userAccountList.size());
+
+        return userAccountList.get(index);
     }
 }

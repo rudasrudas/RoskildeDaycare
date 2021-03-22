@@ -4,6 +4,8 @@ import build.Daycare;
 import build.Model.data.*;
 import build.View.View;
 
+import java.util.Scanner;
+
 public class UpdateController extends Controller{
 
     public static void updateChild(){
@@ -129,7 +131,7 @@ public class UpdateController extends Controller{
                 parent.setName(name);
                 break;
             case "Surname":
-                String surname = inputDate("New Surname: ");
+                String surname = inputString("New Surname: ");
                 if(isNull(surname)){ return; }
                 parent.setSurname(surname);
                 break;
@@ -172,7 +174,7 @@ public class UpdateController extends Controller{
                 teacher.setName(name);
                 break;
             case "Surname":
-                String surname = inputDate("New Surname: ");
+                String surname = inputString("New Surname: ");
                 if(isNull(surname)){ return; }
                 teacher.setSurname(surname);
                 break;
@@ -193,4 +195,73 @@ public class UpdateController extends Controller{
 
         System.out.println("Child information updated in the waiting list.");
     }
+
+    public static void updateAccount(){
+        System.out.println("- Updating account information -");
+
+        UserAccount userAccount = Daycare.model.getUserAccountList().select(Daycare.scanner);
+
+        if(isNull(userAccount)){ return; }
+
+        String column = inputString("What do you want to edit (Username/Password/Authorization)?:", new String[]{"Username", "Password", "Authorization"});
+
+        switch(column){
+            case "Prefix":
+                String username = inputString("New Username: ");
+                if(isNull(username)){ return; }
+                userAccount.setUsername(username);
+                break;
+            case "":
+                String password = inputString("New Password: ");
+                if(isNull(password)){ return; }
+                userAccount.setPassword(password);
+                break;
+            case "Authorization":
+                int authorization = inputInt("New Authorization level: ");
+                if(isNull(authorization)){ return; }
+                userAccount.setAuthorisation(authorization);
+                break;
+            default:
+                System.out.println("Unrecognized method, exiting");
+                break;
+        }
+
+        System.out.println("Child information updated in the waiting list.");
+    }
+
+    public static void acceptChild(){
+        View.renderBlock("- Transferring Child from Waiting List -");
+
+        Child child = Daycare.model.getWaitingList().select(Daycare.scanner);
+
+        if(isNull(child)){ return; }
+
+        Daycare.model.getChildList().add(child);
+
+        Daycare.model.getWaitingList().remove(child);
+
+        /*switch(column){
+            case "Prefix":
+                String username = inputString("New Username: ");
+                if(isNull(username)){ return; }
+                userAccount.setUsername(username);
+                break;
+            case "":
+                String password = inputString("New Password: ");
+                if(isNull(password)){ return; }
+                userAccount.setPassword(password);
+                break;
+            case "Authorization":
+                int authorization = inputInt("New Authorization level: ");
+                if(isNull(authorization)){ return; }
+                userAccount.setAuthorisation(authorization);
+                break;
+            default:
+                System.out.println("Unrecognized method, exiting");
+                break;
+        }*/
+
+        Controller.successMessage(child + " has been removed from the waiting list and added to the active list.");
+    }
+
 }

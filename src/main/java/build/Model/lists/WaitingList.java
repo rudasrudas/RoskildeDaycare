@@ -83,6 +83,7 @@ public class WaitingList {
     public void add(Child child){
         waitingList.add(child);
     }
+
     public void remove(Child child){
         waitingList.remove(child);
     }
