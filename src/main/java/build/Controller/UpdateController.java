@@ -57,7 +57,7 @@ public class UpdateController extends Controller{
     }
 
     public static void updateWaitingList(){
-        System.out.println("- Updating child information -");
+        View.renderBlock("- Updating child information -");
 
         Child child = Daycare.model.getWaitingList().select(Daycare.scanner);
 
@@ -91,7 +91,7 @@ public class UpdateController extends Controller{
                 break;
         }
 
-        System.out.println("Child information updated in the waiting list.");
+        successMessage("Child information updated in the waiting list.");
     }
 
     public static void updateGroup(){
@@ -111,7 +111,7 @@ public class UpdateController extends Controller{
     }
 
     public static void updateParent(){
-        System.out.println("- Updating Parent information -");
+        View.renderBlock("- Updating Parent information -");
 
         Parent parent = Daycare.model.getParentList().select(Daycare.scanner);
 
@@ -150,11 +150,11 @@ public class UpdateController extends Controller{
                 break;
         }
 
-        System.out.println("Parent information has been updated.");
+        successMessage("Parent information has been updated.");
     }
 
     public static void updateTeacher(){
-        System.out.println("- Updating teacher information -");
+        View.renderBlock("- Updating teacher information -");
 
         Teacher teacher = Daycare.model.getTeacherList().select(Daycare.scanner);
 
@@ -193,11 +193,11 @@ public class UpdateController extends Controller{
                 break;
         }
 
-        System.out.println("Child information updated in the waiting list.");
+        successMessage("Child information updated in the waiting list.");
     }
 
     public static void updateAccount(){
-        System.out.println("- Updating account information -");
+        View.renderBlock("- Updating account information -");
 
         UserAccount userAccount = Daycare.model.getUserAccountList().select(Daycare.scanner);
 
@@ -226,7 +226,7 @@ public class UpdateController extends Controller{
                 break;
         }
 
-        System.out.println("Child information updated in the waiting list.");
+        successMessage("Child information updated in the waiting list.");
     }
 
     public static void acceptChild(){
@@ -234,34 +234,12 @@ public class UpdateController extends Controller{
 
         Child child = Daycare.model.getWaitingList().select(Daycare.scanner);
 
-        if(isNull(child)){ return; }
+        if(isNull(child)) return;
 
         Daycare.model.getChildList().add(child);
-
         Daycare.model.getWaitingList().remove(child);
 
-        /*switch(column){
-            case "Prefix":
-                String username = inputString("New Username: ");
-                if(isNull(username)){ return; }
-                userAccount.setUsername(username);
-                break;
-            case "":
-                String password = inputString("New Password: ");
-                if(isNull(password)){ return; }
-                userAccount.setPassword(password);
-                break;
-            case "Authorization":
-                int authorization = inputInt("New Authorization level: ");
-                if(isNull(authorization)){ return; }
-                userAccount.setAuthorisation(authorization);
-                break;
-            default:
-                System.out.println("Unrecognized method, exiting");
-                break;
-        }*/
-
-        Controller.successMessage(child + " has been removed from the waiting list and added to the active list.");
+        successMessage("Child has been removed from the waiting list and added to the active list.");
     }
 
 }

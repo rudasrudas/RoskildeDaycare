@@ -45,7 +45,7 @@ public class AddressList {
 
             for(Address a : addressList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.address (City, Postcode, StreetName, StreetNumber, FloorNumber, ApartmentNumber, CareOfName, CareOfSurname)" +
-                                "VALUES ('%s', '%s', '%s', '%d', '%d', '%d')",
+                                "VALUES ('%s', '%s', '%s', '%d', '%d', '%d', '%s', '%s')",
                         a.getCity(),
                         a.getPostCode(),
                         a.getStreetName(),

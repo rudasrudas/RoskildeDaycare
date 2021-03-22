@@ -11,7 +11,7 @@ public class DisplayController extends Controller {
 
         Child child = Daycare.model.getChildList().select(Daycare.scanner);
 
-        if(isNull(child)) return;
+        if(child == null) return;
 
         View.renderBlock("- Information about child -");
 
@@ -56,7 +56,7 @@ public class DisplayController extends Controller {
         }
         else {
             System.out.println("\t" + child.getParent2().getPrefix() + ". " + child.getParent2().getName() + " " + child.getParent2().getSurname() + "(" + child.getParent2().getRelationship() + ")");
-            System.out.println("\t Phone: " + child.getParent2().getPhoneNumber() + "\t Email: " + child.getParent2().getEmail());
+            System.out.println("\t Phone: " + child.getParent2().getPhoneNumber() + "\n\t Email: " + child.getParent2().getEmail());
             if(child.getParent1().getAddress() != null)
                 System.out.println("\t" + child.getParent2().getAddress().toString());
         }

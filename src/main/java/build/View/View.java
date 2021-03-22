@@ -189,18 +189,37 @@ public class View {
         clearScreen();
 
         switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
-            //case 0 -> Daycare.updateController.acceptChild();
+            case 0 -> Daycare.updateController.acceptChild();
             case 1 -> Daycare.updateController.updateChild();
-            //case 2 -> Daycare.updateController.updateGuardian();
-            //case 3 -> Daycare.updateController.updateTeacher();
+            case 2 -> Daycare.updateController.updateParent();
+            case 3 -> Daycare.updateController.updateTeacher();
             case 4 -> Daycare.updateController.updateGroup();
-            //case 5 -> Daycare.updateController.updateUser();
+            case 5 -> Daycare.updateController.updateAccount();
             case 6 -> viewMainMenu();
         }
     }
 
     public static void viewRemoveMenu(){
+        String[] actions = {
+                "Remove child",
+                "Remove from the waiting list",
+                "Remove guardian",
+                "Remove group",
+                "Remove teacher",
+                "Return"};
 
+        int[] accessLevels = {0, 1, 0, 0, 0, 2};
+
+        clearScreen();
+
+        switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
+            case 0 -> Daycare.removeController.removeChild();
+            case 1 -> Daycare.removeController.removeChildFromWaitingList();
+            case 2 -> Daycare.removeController.removeGuardian();
+            case 3 -> Daycare.removeController.removeGroup();
+            case 4 -> Daycare.removeController.removeTeacher();
+            case 5 -> viewMainMenu();
+        }
     }
 
     public static void viewDisplayMenu(){
