@@ -46,7 +46,7 @@ public class ParentList {
 
             for(Parent p : parentList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.parent (Prefix, ParentName, ParentSurname, Relationship, PhoneNumber, Email, FK_Address)" +
-                                "VALUES (%s, %s, %s, %s, %s, %s, %d)",
+                                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%d')",
                         p.getPrefix(),
                         p.getName(),
                         p.getSurname(),
@@ -91,7 +91,7 @@ public class ParentList {
     public static int locateID(Statement statement, Parent parent){
         if(parent == null) return -1;
 
-        String sql = String.format("SELECT * FROM roskildedaycare1.parent WHERE Prefix = %s AND ParentName = %s AND ParentSurname = %s AND Relationship = %s AND PhoneNumber = %s AND Email = %s",
+        String sql = String.format("SELECT * FROM roskildedaycare1.parent WHERE Prefix = '%s' AND ParentName = '%s' AND ParentSurname = '%s' AND Relationship = '%s' AND PhoneNumber = '%s' AND Email = '%s'",
                 parent.getPrefix(),
                 parent.getName(),
                 parent.getSurname(),
@@ -124,7 +124,7 @@ public class ParentList {
                 System.out.println(toString());
                 input = scanner.nextLine();
 
-                if(input == "") return null;
+                if(input.equals("")) return null;
 
                 index = Integer.valueOf(input);
             }

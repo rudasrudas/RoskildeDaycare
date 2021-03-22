@@ -2,11 +2,12 @@ package build.Controller;
 
 import build.Daycare;
 import build.Model.data.*;
+import build.View.View;
 
 public class UpdateController extends Controller{
 
     public static void updateChild(){
-        System.out.println("- Updating child information -");
+        View.renderBlock("- Updating child information -");
 
         Child child = Daycare.model.getChildList().select(Daycare.scanner);
 
@@ -92,7 +93,7 @@ public class UpdateController extends Controller{
     }
 
     public static void updateGroup(){
-        System.out.println("- Updating group information -");
+        View.renderBlock("- Updating group information -");
 
         Group group = Daycare.model.getGroupList().select(Daycare.scanner);
 

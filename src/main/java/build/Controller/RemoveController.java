@@ -2,11 +2,12 @@ package build.Controller;
 
 import build.Daycare;
 import build.Model.data.*;
+import build.View.View;
 
 public class RemoveController extends Controller {
 
     public static void removeChild(){
-        System.out.println("- Removing a child -");
+        View.renderBlock("- Removing a child -");
 
         Child child = Daycare.model.getChildList().select(Daycare.scanner);
 
@@ -23,7 +24,7 @@ public class RemoveController extends Controller {
     }
 
     public static void removeChildFromWaitingList(){
-        System.out.println("- Removing a child from the waiting list -");
+        View.renderBlock("- Removing a child from the waiting list -");
 
         Child child = Daycare.model.getWaitingList().select(Daycare.scanner);
 
@@ -40,7 +41,7 @@ public class RemoveController extends Controller {
     }
 
     public static void removeGuardian(){
-        System.out.println("- Removing a parent -");
+        View.renderBlock("- Removing a parent -");
 
         Parent parent = Daycare.model.getParentList().select(Daycare.scanner);
 
@@ -56,7 +57,7 @@ public class RemoveController extends Controller {
     }
 
     public static void removeClass(){
-        System.out.println("- Removing a Class -");
+        View.renderBlock("- Removing a Class -");
 
         Group group = Daycare.model.getGroupList().select(Daycare.scanner);
 
@@ -72,7 +73,7 @@ public class RemoveController extends Controller {
     }
 
     public static void removeTeacher(){
-        System.out.println("- Removing a Teacher -");
+        View.renderBlock("- Removing a Teacher -");
 
         Teacher teacher = Daycare.model.getTeacherList().select(Daycare.scanner);
 

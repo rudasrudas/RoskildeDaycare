@@ -8,11 +8,12 @@ import java.util.Scanner;
 import build.Daycare;
 import build.Model.Model;
 import build.Model.data.*;
+import build.View.View;
 
 public class AddController extends Controller {
 
     public static void addChild() {
-        System.out.println("- Adding a child -");
+        View.renderBlock("- Adding a child -");
 
         String childName = inputString("Child name: ");
         String childSurname = inputString("Child surname: ");
@@ -42,7 +43,7 @@ public class AddController extends Controller {
     }
 
     public static void addChildToWaitingList() {
-        System.out.println("- Adding a child to the waiting list -");
+        View.renderBlock("- Adding a child to the waiting list -");
 
         String childName = inputString("Child name: ");
         String childSurname = inputString("Child surname: ");
@@ -71,7 +72,7 @@ public class AddController extends Controller {
     }
 
     public static void registerUser() {
-        System.out.println("- Registering new user -");
+        View.renderBlock("- Registering new user -");
 
         String username = inputString("Username: ");
         String password = hash(inputString("Password: "));
@@ -88,7 +89,7 @@ public class AddController extends Controller {
     }
 
     public static void addGroup() {
-        System.out.println("- Adding a group -");
+        View.renderBlock("- Adding a group -");
 
         String name = inputString("Group name: ");
 
@@ -98,7 +99,7 @@ public class AddController extends Controller {
     }
 
     public static void addGuardian() {
-        System.out.println("- Adding a guardian -");
+        View.renderBlock("- Adding a guardian -");
 
         String parentPrefix = inputString("Prefix: ");
         String parentName = inputString("Parent name: ");
@@ -122,7 +123,7 @@ public class AddController extends Controller {
     }
 
     public static void addTeacher() {
-        System.out.println("- Adding a teacher -");
+        View.renderBlock("- Adding a teacher -");
 
         String teacherPrefix = inputString("Prefix: ");
         String teacherName = inputString("Teacher name: ");
@@ -148,7 +149,7 @@ public class AddController extends Controller {
     }
 
     public static void addBankInfo() {
-        System.out.println("- Adding bank credentials -");
+        View.renderBlock("- Adding bank credentials -");
 
         String BankName = inputString("Bank name: ");
         String AccountName = inputString("Account first name: ");
@@ -170,7 +171,7 @@ public class AddController extends Controller {
     }
 
     public static void addAddress() {
-        System.out.println("- Adding an address -");
+        View.renderBlock("- Adding an address -");
 
         String city = inputString("City name: ");
         int postcode = inputInt("Postcode: ");

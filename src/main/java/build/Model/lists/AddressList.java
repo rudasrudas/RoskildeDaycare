@@ -45,7 +45,7 @@ public class AddressList {
 
             for(Address a : addressList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.address (City, Postcode, StreetName, StreetNumber, FloorNumber, ApartmentNumber, CareOfName, CareOfSurname)" +
-                                "VALUES (%s, %s, %s, %d, %d, %d)",
+                                "VALUES ('%s', '%s', '%s', '%d', '%d', '%d')",
                         a.getCity(),
                         a.getPostCode(),
                         a.getStreetName(),
@@ -69,7 +69,7 @@ public class AddressList {
     public static int locateID(Statement statement, Address address){
         if(address == null) return -1;
 
-        String sql = String.format("SELECT * FROM roskildedaycare1.address WHERE City = %s AND Postcode = %d AND StreetName = %s AND StreetNumber = %d AND FloorNumber = %d AND ApartmentNumber = %d AND CareOfName = %s AND CareOfSurname = %s",
+        String sql = String.format("SELECT * FROM roskildedaycare1.address WHERE City = '%s' AND Postcode = '%d' AND StreetName = '%s' AND StreetNumber = '%d' AND FloorNumber = '%d' AND ApartmentNumber = '%d' AND CareOfName = '%s' AND CareOfSurname = '%s'",
                 address.getCity(),
                 address.getPostCode(),
                 address.getStreetName(),
@@ -121,7 +121,7 @@ public class AddressList {
                 System.out.println(toString());
                 input = scanner.nextLine();
 
-                if(input == "") return null;
+                if(input.equals("")) return null;
 
                 index = Integer.valueOf(input);
             }

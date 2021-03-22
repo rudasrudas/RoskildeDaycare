@@ -37,7 +37,7 @@ public class UserAccountList {
 
             for(UserAccount u : userAccountList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.useraccount (Username, UserPassword, Authorization)" +
-                                "VALUES (%s, %s, %s)",
+                                "VALUES ('%s', '%s', '%s')",
                         u.getUsername(),
                         u.getPassword(),
                         u.getAuthorisation());
@@ -63,6 +63,16 @@ public class UserAccountList {
     }
     public void remove(UserAccount userAccount){
         userAccountList.remove(userAccount);
+    }
+
+    public UserAccount findAccount(String username, String password){
+        for(UserAccount u : userAccountList){
+            if(u.isCorrectPassword(password) && u.getUsername().equals(username)){
+                return u;
+            }
+        }
+
+        return null;
     }
 
     public String toString(){

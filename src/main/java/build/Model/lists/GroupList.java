@@ -33,7 +33,7 @@ public class GroupList {
 
             for(Group g : groupList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.class (ClassName)" +
-                                "VALUES (%s)",
+                                "VALUES ('%s')",
                         g.getGroupName());
 
                 statement.executeUpdate(sql2);
@@ -60,7 +60,7 @@ public class GroupList {
     public static int locateID(Statement statement, Group group){
         if(group == null) return -1;
 
-        String sql = String.format("SELECT * FROM roskildedaycare1.class WHERE ClassName = %s",
+        String sql = String.format("SELECT * FROM roskildedaycare1.class WHERE ClassName = '%s'",
                 group.getGroupName());
         try{
             ResultSet rs = statement.executeQuery(sql);
@@ -98,7 +98,7 @@ public class GroupList {
                 System.out.println(toString());
                 input = scanner.nextLine();
 
-                if(input == "") return null;
+                if(input.equals("")) return null;
 
                 index = Integer.valueOf(input);
             }

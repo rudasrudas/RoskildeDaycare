@@ -42,7 +42,7 @@ public class BankInfoList {
 
             for(BankInfo b : bankInfoList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.bankinfo (BankName, AccountName, AccountSurname, AccountNumber, RegNumber, KontoNumber)" +
-                                "VALUES (%s, %s, %s, %d, %d, %d)",
+                                "VALUES ('%s', '%s', '%'s, '%d', '%d', '%d')",
                         b.getBankName(),
                         b.getAccountName(),
                         b.getAccountSurname(),
@@ -69,7 +69,7 @@ public class BankInfoList {
     public static int locateID(Statement statement, BankInfo bankInfo){
         if(bankInfo == null) return -1;
 
-        String sql = String.format("SELECT * FROM roskildedaycare1.bankinfo WHERE BankName = %s AND AccountName = %s AND AccountSurname = %s AND AccountNumber = %s AND RegNumber = %s AND KontoNumber = %s",
+        String sql = String.format("SELECT * FROM roskildedaycare1.bankinfo WHERE BankName = '%s' AND AccountName = '%s' AND AccountSurname = '%s' AND AccountNumber = '%s' AND RegNumber = '%s' AND KontoNumber = '%s'",
                 bankInfo.getBankName(),
                 bankInfo.getAccountName(),
                 bankInfo.getAccountSurname(),
@@ -114,7 +114,7 @@ public class BankInfoList {
                 System.out.println(toString());
                 input = scanner.nextLine();
 
-                if(input == "") return null;
+                if(input.equals("")) return null;
 
                 index = Integer.valueOf(input);
             }
