@@ -120,6 +120,8 @@ public class View {
         renderBlock("- Logging out. Have a nice day! -");
 
         Daycare.model.saveModel(Daycare.statement);
+
+        System.exit(0); //Breaking the loop
     }
 
     public static void viewMainMenu(){
@@ -134,13 +136,15 @@ public class View {
 
         clearScreen();
 
-        switch(createMenuInput(actions, accessLevels, 2)){
+        switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
             case 0 -> viewAddMenu();
             case 1 -> viewUpdateMenu();
             case 2 -> viewRemoveMenu();
             case 3 -> viewDisplayMenu();
             case 4 -> logOut();
         }
+
+        viewMainMenu(); //Looping back
     }
 
     public static void viewAddMenu(){
@@ -157,7 +161,7 @@ public class View {
 
         clearScreen();
 
-        switch(createMenuInput(actions, accessLevels, 2)){
+        switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
             case 0 -> Daycare.addController.registerUser();
             case 1 -> Daycare.addController.addChild();
             case 2 -> Daycare.addController.addGuardian();
@@ -182,7 +186,7 @@ public class View {
 
         clearScreen();
 
-        switch(createMenuInput(actions, accessLevels, 2)){
+        switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
             //case 0 -> Daycare.updateController.acceptChild();
             case 1 -> Daycare.updateController.updateChild();
             //case 2 -> Daycare.updateController.updateGuardian();
