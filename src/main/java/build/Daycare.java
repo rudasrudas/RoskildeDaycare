@@ -29,9 +29,9 @@ public class Daycare {
 
         model = new Model(statement);
         scanner = new Scanner(System.in);
-        addController.addChild();
+        updateController.updateChild();
 
-        removeController.removeChild();
+        //removeController.removeChild();
         model.saveModel(statement);
 
     }

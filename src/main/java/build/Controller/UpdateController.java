@@ -8,7 +8,7 @@ public class UpdateController extends Controller{
     public static void updateChild(){
         System.out.println("- Updating child information -");
 
-        Child child = Daycare.model.getWaitingList().select(Daycare.scanner);
+        Child child = Daycare.model.getChildList().select(Daycare.scanner);
 
         if(isNull(child)){ return; }
 
@@ -31,9 +31,9 @@ public class UpdateController extends Controller{
                 child.setDateOfBirth(dob);
                 break;
             case "Sex":
-                String sex = inputString("New sex: ");
+                String sex = inputString("New sex (Male/Female): ", new String[]{"Male", "Female"});
                 if(isNull(sex)){ return; }
-                child.setSurname(sex);
+                child.setSex(sex);
                 break;
             case "Group":
                 Group group = Daycare.model.getGroupList().select(Daycare.scanner);
@@ -43,7 +43,7 @@ public class UpdateController extends Controller{
             case "Status":
                 String status = inputString("New status: ");
                 if(isNull(status)){ return; }
-                child.setSurname(status);
+                child.setActivityStatus(status);
                 break;
             default:
                 System.out.println("Unrecognized method, exiting");
