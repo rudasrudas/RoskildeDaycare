@@ -46,11 +46,11 @@ public class TeacherList {
                         t.getPrefix(),
                         t.getName(),
                         t.getSurname(),
-                        t.getGroup().getId(),
+                        GroupList.locateID(statement, t.getGroup()),
                         t.getPhoneNumber(),
                         t.getEmail(),
-                        t.getAddress().getId(),
-                        t.getBankInfo().getId());
+                        AddressList.locateID(statement, t.getAddress()),
+                        BankInfoList.locateID(statement, t.getBankInfo()));
 
                 statement.executeQuery(sql2);
             }

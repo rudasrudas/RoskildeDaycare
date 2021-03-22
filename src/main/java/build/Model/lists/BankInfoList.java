@@ -1,5 +1,6 @@
 package build.Model.lists;
 
+import build.Model.data.Address;
 import build.Model.data.BankInfo;
 
 import java.sql.SQLException;
@@ -61,6 +62,29 @@ public class BankInfoList {
         }
 
         return null;
+    }
+
+    public static int locateID(Statement statement, BankInfo bankInfo){
+        String sql = String.format("SELECT * FROM roskildedaycare1.bankinfo WHERE BankName = %s AND AccountName = %s AND AccountSurname = %s AND AccountNumber = %s AND RegNumber = %s AND KontoNumber = %s",
+                bankInfo.getBankName(),
+                bankInfo.getAccountName(),
+                bankInfo.getAccountSurname(),
+                bankInfo.getAccountNumber(),
+                bankInfo.getRegNumber(),
+                bankInfo.getKontoNumber());
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs == null){
+                return -1; //if no bankinfo is found, dont bother
+            }
+
+            return rs.getInt("PK_BankInfo");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return -1;
     }
 
     public String toString(){

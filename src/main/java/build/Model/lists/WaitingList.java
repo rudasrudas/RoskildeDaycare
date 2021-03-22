@@ -55,13 +55,13 @@ public class WaitingList {
                         c.getDateOfBirth(),
                         c.getSex(),
                         c.getEntryDate(),
-                        c.getGroup().getId(),
+                        GroupList.locateID(statement, c.getGroup()),
                         c.getActivityStatus(),
                         c.getPaymentDate(),
                         c.getPaymentPeriod(),
                         c.getPaymentStatus(),
-                        c.getParent1().getId(),
-                        c.getParent2().getId());
+                        ParentList.locateID(statement, c.getParent1()),
+                        ParentList.locateID(statement, c.getParent2()));
 
                 statement.executeQuery(sql2);
             }
