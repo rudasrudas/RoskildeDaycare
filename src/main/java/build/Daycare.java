@@ -37,10 +37,8 @@ public class Daycare {
         scanner = new Scanner(System.in);
 
         view = new View();
-        view.viewMainMenu();
+        view.viewLoginMenu();
 
-        //updateController.updateChild();
-        //removeController.removeChild();
         model.saveModel(statement);
 
     }

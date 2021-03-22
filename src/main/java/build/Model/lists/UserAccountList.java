@@ -37,7 +37,7 @@ public class UserAccountList {
 
             for(UserAccount u : userAccountList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.useraccount (Username, UserPassword, Authorization)" +
-                                "VALUES (%s, %s, %s)",
+                                "VALUES ('%s', '%s', '%s')",
                         u.getUsername(),
                         u.getPassword(),
                         u.getAuthorisation());

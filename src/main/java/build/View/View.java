@@ -2,6 +2,8 @@ package build.View;
 
 import build.Daycare;
 import build.Controller.Controller;
+import build.Model.data.UserAccount;
+
 import java.sql.*;
 
 public class View {
@@ -64,7 +66,7 @@ public class View {
             options[i] = i;
         }
 
-        int result = Controller.inputInt("Select action (0-" + (j-1) + "): ", options);
+        int result = Controller.inputInt("\nSelect action (0-" + (j-1) + "): ", options);
 
         //Backwards mapping the selected button to the actual action
         for(int i = actions.length - 1, k = j; i >= 0 ; i--){
@@ -75,11 +77,48 @@ public class View {
         return -1; //not found
     }
 
+    public static void renderBlock(String text){
+        final int blockWidth = 40;
+
+        clearScreen();
+
+        //Top
+        System.out.print("┌");
+        for(int i = 0; i < blockWidth; i++){ System.out.print("─"); }
+        System.out.println("┐");
+
+        //Middle
+        int padding = (blockWidth - text.length());
+        System.out.print("│");
+        for(int i = 0; i < padding/2 + padding%2; i++){ System.out.print(" "); }
+        System.out.print(text);
+        for(int i = 0; i < padding/2; i++){ System.out.print(" "); }
+        System.out.println("│");
+
+        //Bottom
+        System.out.print("└");
+        for(int i = 0; i < blockWidth; i++){ System.out.print("─"); }
+        System.out.println("┘");
+
+        System.out.println();
+    }
+
     public static void viewLoginMenu(){
 
+        renderBlock("- Welcome to Roskilde Daycare -");
+
+        UserAccount account = Controller.logIn();
+        if(account != null) {
+            Daycare.user = account;
+            viewMainMenu();
+        }
+        else viewLoginMenu();
     }
 
     public static void logOut(){
+
+        renderBlock("- Logging out. Have a nice day! -");
+
         Daycare.model.saveModel(Daycare.statement);
     }
 

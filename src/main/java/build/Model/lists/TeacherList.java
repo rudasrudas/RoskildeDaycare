@@ -42,7 +42,7 @@ public class TeacherList {
 
             for(Teacher t : teacherList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.teacher (Prefix, TeacherName, TeacherSurname, FK_Group, PhoneNumber, Email, FK_Address, FK_BankInfo)" +
-                                "VALUES (%s, %s, %s, %d, %s, %s, %d, %d)",
+                                "VALUES ('%s', '%s', '%s', '%d', '%s', '%s', '%d', '%d')",
                         t.getPrefix(),
                         t.getName(),
                         t.getSurname(),
@@ -87,7 +87,7 @@ public class TeacherList {
                 System.out.println(toString());
                 input = scanner.nextLine();
 
-                if(input == "") return null;
+                if(input.equals("")) return null;
 
                 index = Integer.valueOf(input);
             }

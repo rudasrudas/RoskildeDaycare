@@ -50,7 +50,7 @@ public class WaitingList {
 
             for(Child c : waitingList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.waitinglist (ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
-                                "VALUES (%s, %s, %s, %s, %s, %d, %s, %s, %d, %s, %d, %d)",
+                                "VALUES ('%s', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%d', '%s', '%d', '%d')",
                         c.getName(),
                         c.getSurname(),
                         c.getDateOfBirth(),
@@ -108,7 +108,7 @@ public class WaitingList {
                 System.out.println(toString());
                 input = scanner.nextLine();
 
-                if(input == "") return null;
+                if(input.equals("")) return null;
 
                 index = Integer.valueOf(input);
             }
