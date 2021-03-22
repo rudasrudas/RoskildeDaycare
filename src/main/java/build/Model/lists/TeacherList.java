@@ -2,7 +2,7 @@ package build.Model.lists;
 
 import build.Model.data.*;
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class TeacherList {
     private ArrayList<Teacher> teacherList;
@@ -38,7 +38,7 @@ public class TeacherList {
     public void saveToDatabase(Statement statement){
         try{
             String sql1 = "TRUNCATE TABLE roskildedaycare1.teacher";
-            statement.executeQuery(sql1);
+            statement.executeUpdate(sql1);
 
             for(Teacher t : teacherList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.teacher (Prefix, TeacherName, TeacherSurname, FK_Group, PhoneNumber, Email, FK_Address, FK_BankInfo)" +
@@ -52,7 +52,7 @@ public class TeacherList {
                         AddressList.locateID(statement, t.getAddress()),
                         BankInfoList.locateID(statement, t.getBankInfo()));
 
-                statement.executeQuery(sql2);
+                statement.executeUpdate(sql2);
             }
         }
         catch(SQLException e){
@@ -63,6 +63,9 @@ public class TeacherList {
     public void add(Teacher teacher){
         teacherList.add(teacher);
     }
+    public void remove(Teacher teacher){
+        teacherList.remove(teacher);
+    }
 
     public String toString(){
         String result = "";
@@ -71,4 +74,30 @@ public class TeacherList {
             result += i + ". " + teacherList.get(i).toString();
         }
         return result;
-    }}
+    }
+
+    public Teacher select(Scanner scanner){
+
+        int index;
+        String input;
+
+        do {
+            try {
+                System.out.println("Please select a teacher: ");
+                System.out.println(toString());
+                input = scanner.nextLine();
+
+                if(input == "") return null;
+
+                index = Integer.valueOf(input);
+            }
+            catch (Exception e){
+                System.out.println("Input is incorrect. Try again.");
+                index = -1;
+            }
+        }
+        while(index < 0 || index >= teacherList.size());
+
+        return teacherList.get(index);
+    }
+}

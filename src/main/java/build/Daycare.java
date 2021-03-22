@@ -10,6 +10,9 @@ public class Daycare {
     public static Model model;
 
     public static AddController addController;
+    public static UpdateController updateController;
+    public static RemoveController removeController;
+    public static DisplayController displayController;
 
     public static Scanner scanner;
 
@@ -27,6 +30,9 @@ public class Daycare {
         model = new Model(statement);
         scanner = new Scanner(System.in);
         addController.addChild();
+        model.saveModel(statement);
+        removeController.removeChild();
+
     }
 
     public static Statement connectDB(String url, String user, String password) throws SQLException {

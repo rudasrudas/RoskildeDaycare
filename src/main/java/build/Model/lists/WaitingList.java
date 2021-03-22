@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class WaitingList {
     private ArrayList<Child> waitingList;
@@ -45,7 +46,7 @@ public class WaitingList {
     public void saveToDatabase(Statement statement){
         try{
             String sql1 = "TRUNCATE TABLE roskildedaycare1.waitinglist";
-            statement.executeQuery(sql1);
+            statement.executeUpdate(sql1);
 
             for(Child c : waitingList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.waitinglist (ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
@@ -63,7 +64,7 @@ public class WaitingList {
                         ParentList.locateID(statement, c.getParent1()),
                         ParentList.locateID(statement, c.getParent2()));
 
-                statement.executeQuery(sql2);
+                statement.executeUpdate(sql2);
             }
         }
         catch(SQLException e){
@@ -82,6 +83,9 @@ public class WaitingList {
     public void add(Child child){
         waitingList.add(child);
     }
+    public void remove(Child child){
+        waitingList.remove(child);
+    }
 
     public String toString(){
         String result = "";
@@ -91,5 +95,30 @@ public class WaitingList {
         }
 
         return result;
+    }
+
+    public Child select(Scanner scanner){
+
+        int index;
+        String input;
+
+        do {
+            try {
+                System.out.println("Please select a child: ");
+                System.out.println(toString());
+                input = scanner.nextLine();
+
+                if(input == "") return null;
+
+                index = Integer.valueOf(input);
+            }
+            catch (Exception e){
+                System.out.println("Input is incorrect. Try again.");
+                index = -1;
+            }
+        }
+        while(index < 0 || index >= waitingList.size());
+
+        return waitingList.get(index);
     }
 }

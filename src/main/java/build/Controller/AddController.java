@@ -7,24 +7,50 @@ import java.util.Scanner;
 
 import build.Daycare;
 import build.Model.Model;
-import build.Model.data.Child;
-import build.Model.data.Group;
-import build.Model.data.Parent;
-import build.Model.data.UserAccount;
-import build.Model.data.Address;
+import build.Model.data.*;
 
-public class AddController extends Controller{
+public class AddController extends Controller {
 
-    public static void addChild(){
+    public static void addChild() {
         System.out.println("- Adding a child -");
 
         String childName = inputString("Child name: ");
         String childSurname = inputString("Child surname: ");
         String dateOfBirth = inputDate("Date of birth (YYYY-MM-DD): ");
         String sex = inputString("Child's sex (Male/Female): ", new String[]{"Male", "Female"});
+        String entryDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        Group group = Daycare.model.getGroupList().select(Daycare.scanner);
+        Parent parent1 = Daycare.model.getParentList().select(Daycare.scanner);
+        Parent parent2 = Daycare.model.getParentList().select(Daycare.scanner);
+
+        Child child = new Child(-1,
+                childName,
+                childSurname,
+                dateOfBirth,
+                sex,
+                entryDate,
+                group,
+                "Active",
+                null,
+                0,
+                "Unpaid",
+                parent1,
+                parent2);
+
+        Daycare.model.getChildList().add(child);
+        System.out.println("Child added to the system");
+    }
+
+    public static void addChildToWaitingList() {
+        System.out.println("- Adding a child to the waiting list -");
+
+        String childName = inputString("Child name: ");
+        String childSurname = inputString("Child surname: ");
+        String dateOfBirth = inputDate("Date of birth (YYYY-MM-DD): ");
+        String sex = inputString("Child's sex (Male/Female): ", new String[]{"Male", "Female"});
         String joinDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        Parent parent1 = Daycare.model.getParentList().selectParent(Daycare.scanner);
-        Parent parent2 = Daycare.model.getParentList().selectParent(Daycare.scanner);
+        Parent parent1 = Daycare.model.getParentList().select(Daycare.scanner);
+        Parent parent2 = Daycare.model.getParentList().select(Daycare.scanner);
 
         Child child = new Child(-1,
                 childName,
@@ -44,14 +70,14 @@ public class AddController extends Controller{
         System.out.println("Child added to the waiting list");
     }
 
-    public static void registerUser(){
+    public static void registerUser() {
         System.out.println("- Registering new user -");
 
         String username = inputString("Username: ");
         String password = hash(inputString("Password: "));
         int authorisation = inputInt("Authorisation level (1 -- Administrator, 2 -- Teacher): ", new int[]{1, 2});
 
-        if(username.equals("") || password.equals("") || authorisation < 0){
+        if (username.equals("") || password.equals("") || authorisation < 0) {
             System.out.println("Insufficient information. Exiting.");
             return;
         }
@@ -61,7 +87,7 @@ public class AddController extends Controller{
         System.out.println("User account registered.");
     }
 
-    public static void addGroup(){
+    public static void addGroup() {
         System.out.println("- Adding a group -");
 
         String name = inputString("Group name: ");
@@ -71,8 +97,8 @@ public class AddController extends Controller{
         System.out.println("Group added");
     }
 
-    public static void addGuardian(){
-        System.out.println("- Adding a parent/Guardian -");
+    public static void addGuardian() {
+        System.out.println("- Adding a guardian -");
 
         String parentPrefix = inputString("Prefix: ");
         String parentName = inputString("Parent name: ");
@@ -80,7 +106,7 @@ public class AddController extends Controller{
         String relationship = inputString("Relationship to child: ");
         String phoneNumber = inputString("Phone Number: ");
         String email = inputString("Email Address: ");
-        Address address = Daycare.model.getAddressList().selectAddress(Daycare.scanner);
+        Address address = Daycare.model.getAddressList().select(Daycare.scanner);
 
         Parent parent = new Parent(-1,
                 parentPrefix,
@@ -95,17 +121,17 @@ public class AddController extends Controller{
         System.out.println("Child added to the waiting list");
     }
 
-    public static void addTeacher(){
+    public static void addTeacher() {
         System.out.println("- Adding a teacher -");
 
         String teacherPrefix = inputString("Prefix: ");
         String teacherName = inputString("Teacher name: ");
-        String teacherSurname = inputString("Teacher surname: ")
-        Group group = Daycare.model.getGroupList().selectGroup(Daycare.scanner);
+        String teacherSurname = inputString("Teacher surname: ");
+        Group group = Daycare.model.getGroupList().select(Daycare.scanner);
         String phoneNumber = inputString("Phone Number: ");
         String email = inputString("Email Address: ");
-        Address address = Daycare.model.getAddressList().selectAddress(Daycare.scanner);
-        BankInfo bankInfo = Daycare.model.getBankInfoList().selectBankInfo(Daycare.scanner);
+        Address address = Daycare.model.getAddressList().select(Daycare.scanner);
+        BankInfo bankInfo = Daycare.model.getBankInfoList().select(Daycare.scanner);
 
         Teacher teacher = new Teacher(-1,
                 teacherPrefix,
@@ -119,21 +145,17 @@ public class AddController extends Controller{
 
         Daycare.model.getTeacherList().add(teacher);
         System.out.println("Teacher added to the teacher");
-
-
-
     }
 
-    public static void addBankInfo(){
-        System.out.println("- Adding bank details -");
+    public static void addBankInfo() {
+        System.out.println("- Adding bank credentials -");
 
-        BankInfo bankInfo = Daycare.model.getBankInfoList().selectBankInfo(Daycare.scanner);
         String BankName = inputString("Bank name: ");
         String AccountName = inputString("Account first name: ");
         String AccountSurname = inputString("Account surname: ");
-        String AccountNumber = inputString("Account number: ");
-        String RegNumber = inputString("Registry number: ");
-        String KontoNumber = inpurtString("Konto number: ");
+        int AccountNumber = inputInt("Account number: ");
+        int RegNumber = inputInt("Registry number: ");
+        int KontoNumber = inputInt("Konto number: ");
 
         BankInfo bankInfo = new BankInfo(-1,
                 BankName,
@@ -143,32 +165,35 @@ public class AddController extends Controller{
                 RegNumber,
                 KontoNumber);
 
-        Daycare.model.getTeacherList().add(bankInfo);
+        Daycare.model.getBankInfoList().add(bankInfo);
         System.out.println("Your Bank account details have been added");
+    }
 
-}
-    public static void addAddress(){
-        System.out.println("- Adding Address -");
+    public static void addAddress() {
+        System.out.println("- Adding an address -");
 
-        Address address = Daycare.model.getAddressList().selectAddress(Daycare.scanner);
-        String city = inputString("City name: ")
-        String postcode = inputString("postcode: ")
-        String StreetName = inputString("Street name: ");
-        String StreetNumber = inputString("Street Number: ");
-        String CareOfName = inputString("Care of (first name): ");
-        String CareOfSurename = inputString("Care of (second name): ");
+        String city = inputString("City name: ");
+        int postcode = inputInt("Postcode: ");
+        String streetName = inputString("Street name: ");
+        int streetNumber = inputInt("Street number: ");
+        int floorNumber = inputInt("Floor number: ");
+        int apartmentNumber = inputInt("Apartment number: ");
+        String careOfName = inputString("Care of (first name): ");
+        String careOfSurename = inputString("Care of (second name): ");
 
-        Address address = new Adress(-1,
-                address,
+        Address address = new Address(-1,
                 city,
                 postcode,
-                StreetName,
-                StreetNumber,
-                CareOfName,
-                CareOfSurename);
+                streetName,
+                streetNumber,
+                floorNumber,
+                apartmentNumber,
+                careOfName,
+                careOfSurename);
 
 
         Daycare.model.getAddressList().add(address);
         System.out.println("Your address has been added");
 
     }
+}

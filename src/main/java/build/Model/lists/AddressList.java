@@ -1,6 +1,8 @@
 package build.Model.lists;
 
 import build.Model.data.Address;
+import build.Model.data.BankInfo;
+import build.Model.data.Child;
 import build.Model.data.Parent;
 
 import java.sql.ResultSet;
@@ -39,7 +41,7 @@ public class AddressList {
     public void saveToDatabase(Statement statement){
         try{
             String sql1 = "TRUNCATE TABLE roskildedaycare1.address";
-            statement.executeQuery(sql1);
+            statement.executeUpdate(sql1);
 
             for(Address a : addressList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.address (City, Postcode, StreetName, StreetNumber, FloorNumber, ApartmentNumber, CareOfName, CareOfSurname)" +
@@ -53,13 +55,16 @@ public class AddressList {
                         a.getCareOfName(),
                         a.getCareOfSurname());
 
-                statement.executeQuery(sql2);
+                statement.executeUpdate(sql2);
             }
         }
         catch(SQLException e){
             e.printStackTrace();
         }
     }
+
+    public void add(Address address){ addressList.add(address); }
+    public void remove(Address address){ addressList.remove(address); }
 
     public static int locateID(Statement statement, Address address){
         String sql = String.format("SELECT * FROM roskildedaycare1.address WHERE City = %s AND Postcode = %d AND StreetName = %s AND StreetNumber = %d AND FloorNumber = %d AND ApartmentNumber = %d AND CareOfName = %s AND CareOfSurname = %s",
@@ -103,7 +108,7 @@ public class AddressList {
         return result;
     }
 
-    public Address selectAddress(Scanner scanner){
+    public Address select(Scanner scanner){
 
         int index;
         String input;

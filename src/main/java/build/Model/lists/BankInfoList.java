@@ -2,10 +2,12 @@ package build.Model.lists;
 
 import build.Model.data.Address;
 import build.Model.data.BankInfo;
+import build.Model.data.Teacher;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.*;
+import java.util.Scanner;
 
 public class BankInfoList {
 
@@ -36,7 +38,7 @@ public class BankInfoList {
     public void saveToDatabase(Statement statement){
         try{
             String sql1 = "TRUNCATE TABLE roskildedaycare1.bankinfo";
-            statement.executeQuery(sql1);
+            statement.executeUpdate(sql1);
 
             for(BankInfo b : bankInfoList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.bankinfo (BankName, AccountName, AccountSurname, AccountNumber, RegNumber, KontoNumber)" +
@@ -48,7 +50,7 @@ public class BankInfoList {
                         b.getRegNumber(),
                         b.getKontoNumber());
 
-                statement.executeQuery(sql2);
+                statement.executeUpdate(sql2);
             }
         }
         catch(SQLException e){
@@ -87,6 +89,9 @@ public class BankInfoList {
         return -1;
     }
 
+    public void add(BankInfo bankInfo){ bankInfoList.add(bankInfo); }
+    public void remove(BankInfo bankInfo){ bankInfoList.remove(bankInfo); }
+
     public String toString(){
         String result = "";
 
@@ -96,4 +101,28 @@ public class BankInfoList {
         return result;
     }
 
+    public BankInfo select(Scanner scanner){
+
+        int index;
+        String input;
+
+        do {
+            try {
+                System.out.println("Please select a bank account: ");
+                System.out.println(toString());
+                input = scanner.nextLine();
+
+                if(input == "") return null;
+
+                index = Integer.valueOf(input);
+            }
+            catch (Exception e){
+                System.out.println("Input is incorrect. Try again.");
+                index = -1;
+            }
+        }
+        while(index < 0 || index >= bankInfoList.size());
+
+        return bankInfoList.get(index);
+    }
 }

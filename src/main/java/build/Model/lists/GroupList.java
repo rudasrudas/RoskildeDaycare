@@ -29,14 +29,14 @@ public class GroupList {
     public void saveToDatabase(Statement statement){
         try{
             String sql1 = "TRUNCATE TABLE roskildedaycare1.class";
-            statement.executeQuery(sql1);
+            statement.executeUpdate(sql1);
 
             for(Group g : groupList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.class (ClassName)" +
                                 "VALUES (%s)",
                         g.getGroupName());
 
-                statement.executeQuery(sql2);
+                statement.executeUpdate(sql2);
             }
         }
         catch(SQLException e){
@@ -55,6 +55,7 @@ public class GroupList {
     public void add(Group group){
         groupList.add(group);
     }
+    public void remove(Group group){ groupList.remove(group); }
 
     public static int locateID(Statement statement, Group group){
         String sql = String.format("SELECT * FROM roskildedaycare1.class WHERE ClassName = %s",
@@ -84,22 +85,27 @@ public class GroupList {
         return result;
     }
 
-    public Group selectGroup(Scanner scanner){
+    public Group select(Scanner scanner){
 
         int index;
+        String input;
 
         do {
             try {
                 System.out.println("Please select a group: ");
                 System.out.println(toString());
-                index = scanner.nextInt();
+                input = scanner.nextLine();
+
+                if(input == "") return null;
+
+                index = Integer.valueOf(input);
             }
             catch (Exception e){
                 System.out.println("Input is incorrect. Try again.");
                 index = -1;
             }
         }
-        while(index >= 0 && index < groupList.size());
+        while(index < 0 || index >= groupList.size());
 
         return groupList.get(index);
     }

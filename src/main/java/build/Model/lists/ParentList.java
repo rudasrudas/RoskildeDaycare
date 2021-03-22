@@ -42,7 +42,7 @@ public class ParentList {
     public void saveToDatabase(Statement statement){
         try{
             String sql1 = "TRUNCATE TABLE roskildedaycare1.parent";
-            statement.executeQuery(sql1);
+            statement.executeUpdate(sql1);
 
             for(Parent p : parentList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.parent (Prefix, ParentName, ParentSurname, Relationship, PhoneNumber, Email, FK_Address)" +
@@ -55,7 +55,7 @@ public class ParentList {
                         p.getEmail(),
                         AddressList.locateID(statement, p.getAddress()));
 
-                statement.executeQuery(sql2);
+                statement.executeUpdate(sql2);
             }
         }
         catch(SQLException e){
@@ -73,6 +73,9 @@ public class ParentList {
 
     public void add(Parent parent){
         parentList.add(parent);
+    }
+    public void remove(Parent parent){
+        parentList.remove(parent);
     }
 
     public String toString(){
@@ -108,7 +111,7 @@ public class ParentList {
         return -1;
     }
 
-    public Parent selectParent(Scanner scanner){
+    public Parent select(Scanner scanner){
 
         int index;
         String input;

@@ -33,7 +33,7 @@ public class UserAccountList {
     public void saveToDatabase(Statement statement){
         try{
             String sql1 = "TRUNCATE TABLE roskildedaycare1.useraccount";
-            statement.executeQuery(sql1);
+            statement.executeUpdate(sql1);
 
             for(UserAccount u : userAccountList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.useraccount (Username, UserPassword, Authorization)" +
@@ -42,7 +42,7 @@ public class UserAccountList {
                         u.getPassword(),
                         u.getAuthorisation());
 
-                statement.executeQuery(sql2);
+                statement.executeUpdate(sql2);
             }
         }
         catch(SQLException e){
@@ -60,6 +60,9 @@ public class UserAccountList {
 
     public void add(UserAccount userAccount){
         userAccountList.add(userAccount);
+    }
+    public void remove(UserAccount userAccount){
+        userAccountList.remove(userAccount);
     }
 
     public String toString(){
