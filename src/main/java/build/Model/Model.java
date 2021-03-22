@@ -28,7 +28,15 @@ public class Model {
 
     public void saveModel(Statement statement){
 
+        groupList.saveToDatabase(statement);
+        addressList.saveToDatabase(statement);
+        bankInfoList.saveToDatabase(statement);
+        parentList.saveToDatabase(statement);
+        //userAccountList.saveToDatabase(statement);
+
+        teacherList.saveToDatabase(statement);
         childList.saveToDatabase(statement);
+        waitingList.saveToDatabase(statement);
     }
 
     public GroupList getGroupList() {
