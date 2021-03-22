@@ -4,6 +4,8 @@ import build.Model.Model;
 
 import java.sql.*;
 import build.Controller.*;
+import build.Model.data.UserAccount;
+import build.View.View;
 import java.util.*;
 
 public class Daycare {
@@ -14,7 +16,12 @@ public class Daycare {
     public static RemoveController removeController;
     public static DisplayController displayController;
 
+    public static View view;
+
+    public static UserAccount user;
     public static Scanner scanner;
+
+    public static Statement statement;
 
     public static void main(String[] args) throws SQLException{
         Daycare daycare = new Daycare();
@@ -25,12 +32,14 @@ public class Daycare {
         String user = "roskildedaycare1";
         String password = "Kd9el?c~CtQE";
 
-        Statement statement = connectDB(url, user, password);
-
+        statement = connectDB(url, user, password);
         model = new Model(statement);
         scanner = new Scanner(System.in);
-        updateController.updateChild();
 
+        view = new View();
+        view.viewMainMenu();
+
+        //updateController.updateChild();
         //removeController.removeChild();
         model.saveModel(statement);
 
