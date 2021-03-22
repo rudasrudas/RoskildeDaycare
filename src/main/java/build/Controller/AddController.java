@@ -78,8 +78,8 @@ public class AddController extends Controller {
         String password = hash(inputString("Password: "));
         int authorisation = inputInt("Authorisation level (1 -- Administrator, 2 -- Teacher): ", new int[]{1, 2});
 
-        if (username.equals("") || password.equals("") || authorisation < 0) {
-            System.out.println("Insufficient information. Exiting.");
+        if (username.length() < 6 || password.length() < 6 || authorisation < 0 || authorisation > 2) {
+            errorMessage("Input is incorrect");
             return;
         }
 
@@ -95,7 +95,7 @@ public class AddController extends Controller {
 
         Group group = new Group(-1, name);
         Daycare.model.getGroupList().add(group);
-        successMessage("Group added");
+        successMessage("Group registered");
     }
 
     public static void addGuardian() {
@@ -119,7 +119,7 @@ public class AddController extends Controller {
                 address);
 
         Daycare.model.getParentList().add(parent);
-        successMessage("Child added to the waiting list");
+        successMessage("Guardian registered");
     }
 
     public static void addTeacher() {

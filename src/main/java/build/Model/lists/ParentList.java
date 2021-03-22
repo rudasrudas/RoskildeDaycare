@@ -104,7 +104,7 @@ public class ParentList {
                 return -1; //if no parent is found, dont bother
             }
 
-            return rs.getInt("PK_Parent");
+            if(rs.next()) return rs.getInt("PK_Parent");
         }
         catch (SQLException e){
             e.printStackTrace();

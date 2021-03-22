@@ -151,24 +151,26 @@ public class View {
         String[] actions = {
                 "Register new account",
                 "Add child",
+                "Add child to the waiting list",
                 "Add guardian",
                 "Add teacher",
                 "Add address",
                 "Add bank credentials",
                 "Return"};
 
-        int[] accessLevels = {0, 1, 1, 0, 1, 0, 2};
+        int[] accessLevels = {0, 1, 2, 1, 0, 1, 0, 2};
 
         clearScreen();
 
         switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
             case 0 -> Daycare.addController.registerUser();
             case 1 -> Daycare.addController.addChild();
-            case 2 -> Daycare.addController.addGuardian();
-            case 3 -> Daycare.addController.addTeacher();
-            case 4 -> Daycare.addController.addAddress();
-            case 5 -> Daycare.addController.addBankInfo();
-            case 6 -> viewMainMenu();
+            case 2 -> Daycare.addController.addChildToWaitingList();
+            case 3 -> Daycare.addController.addGuardian();
+            case 4 -> Daycare.addController.addTeacher();
+            case 5 -> Daycare.addController.addAddress();
+            case 6 -> Daycare.addController.addBankInfo();
+            case 7 -> viewMainMenu();
         }
     }
 
@@ -202,6 +204,26 @@ public class View {
     }
 
     public static void viewDisplayMenu(){
+        String[] actions = {
+                "View child information",
+                "View waiting list",
+                "View guardian information",
+                "View group information",
+                "View teacher information",
+                "Return"};
 
+        int[] accessLevels = {2, 1, 2, 2, 1, 2};
+
+        clearScreen();
+
+        switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
+            case 0 -> Daycare.displayController.displayChild();
+            //case 1 -> Daycare.updateController.updateChild();
+            //case 2 -> Daycare.updateController.updateGuardian();
+            //case 3 -> Daycare.updateController.updateTeacher();
+            //case 4 -> Daycare.updateController.updateGroup();
+            //case 5 -> Daycare.updateController.updateUser();
+            //case 6 -> viewMainMenu();
+        }
     }
 }
