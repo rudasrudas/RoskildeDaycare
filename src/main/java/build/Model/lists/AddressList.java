@@ -61,6 +61,31 @@ public class AddressList {
         }
     }
 
+    public static int locateID(Statement statement, Address address){
+        String sql = String.format("SELECT * FROM roskildedaycare1.address WHERE City = %s AND Postcode = %d AND StreetName = %s AND StreetNumber = %d AND FloorNumber = %d AND ApartmentNumber = %d AND CareOfName = %s AND CareOfSurname = %s",
+                address.getCity(),
+                address.getPostCode(),
+                address.getStreetName(),
+                address.getStreetNumber(),
+                address.getFloorNumber(),
+                address.getApartmentNumber(),
+                address.getCareOfName(),
+                address.getCareOfSurname());
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs == null){
+                return -1; //if no address is found, dont bother
+            }
+
+            return rs.getInt("PK_Address");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
+
     public Address getAddress(int id){
         for(Address g : addressList){
             if(g.getId() == id) return g;

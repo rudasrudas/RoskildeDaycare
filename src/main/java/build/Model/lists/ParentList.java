@@ -53,7 +53,7 @@ public class ParentList {
                         p.getRelationship(),
                         p.getPhoneNumber(),
                         p.getEmail(),
-                        p.getAddress().getId());
+                        AddressList.locateID(statement, p.getAddress()));
 
                 statement.executeQuery(sql2);
             }
@@ -83,6 +83,29 @@ public class ParentList {
         }
 
         return result;
+    }
+
+    public static int locateID(Statement statement, Parent parent){
+        String sql = String.format("SELECT * FROM roskildedaycare1.parent WHERE Prefix = %s AND ParentName = %s AND ParentSurname = %s AND Relationship = %s AND PhoneNumber = %s AND Email = %s",
+                parent.getPrefix(),
+                parent.getName(),
+                parent.getSurname(),
+                parent.getRelationship(),
+                parent.getPhoneNumber(),
+                parent.getEmail());
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs == null){
+                return -1; //if no parent is found, dont bother
+            }
+
+            return rs.getInt("PK_Parent");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return -1;
     }
 
     public Parent selectParent(Scanner scanner){

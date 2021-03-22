@@ -32,7 +32,7 @@ public class Model {
         addressList.saveToDatabase(statement);
         bankInfoList.saveToDatabase(statement);
         parentList.saveToDatabase(statement);
-        //userAccountList.saveToDatabase(statement);
+        userAccountList.saveToDatabase(statement);
 
         teacherList.saveToDatabase(statement);
         childList.saveToDatabase(statement);

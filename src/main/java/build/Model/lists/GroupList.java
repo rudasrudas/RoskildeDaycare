@@ -1,5 +1,6 @@
 package build.Model.lists;
 
+import build.Model.data.BankInfo;
 import build.Model.data.Group;
 
 import java.sql.*;
@@ -53,6 +54,24 @@ public class GroupList {
 
     public void add(Group group){
         groupList.add(group);
+    }
+
+    public static int locateID(Statement statement, Group group){
+        String sql = String.format("SELECT * FROM roskildedaycare1.class WHERE ClassName = %s",
+                group.getGroupName());
+        try{
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs == null){
+                return -1; //if no group is found, dont bother
+            }
+
+            return rs.getInt("PK_Class");
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return -1;
     }
 
     public String toString(){
