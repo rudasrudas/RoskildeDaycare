@@ -17,6 +17,8 @@ public class UpdateController extends Controller{
 
         String column = inputString("What do you want to edit (Name/Surname/DateOfBirth/Sex/Group/Status)?:", new String[]{"Name", "Surname", "DateOfBirth", "Sex", "Group", "Status"});
 
+        if(isNull(column)) return;
+
         switch(column){
             case "Name":
                 String name = inputString("New name: ");
@@ -64,6 +66,8 @@ public class UpdateController extends Controller{
         if(isNull(child)){ return; }
 
         String column = inputString("What do you want to edit (Name/Surname/DateOfBirth/Sex)?:", new String[]{"Name", "Surname", "DateOfBirth", "Sex"});
+
+        if(isNull(column)) return;
 
         switch(column){
             case "Name":
@@ -119,6 +123,8 @@ public class UpdateController extends Controller{
 
         String column = inputString("What do you want to edit (Prefix/Name/Surname/PhoneNumber/Email)?:", new String[]{"Prefix", "Name", "Surname", "PhoneNumber", "Email"});
 
+        if(isNull(column)) return;
+
         switch(column){
             case "Prefix":
                 String prefix = inputString("New prefix: ");
@@ -161,6 +167,8 @@ public class UpdateController extends Controller{
         if(isNull(teacher)){ return; }
 
         String column = inputString("What do you want to edit (Prefix/Name/Surname/Group/PhoneNumber/Email)?:", new String[]{"Prefix", "Name", "Surname", "Group", "PhoneNumber", "Email"});
+
+        if(isNull(column)) return;
 
         switch(column){
             case "Prefix":
@@ -208,6 +216,8 @@ public class UpdateController extends Controller{
         if(isNull(userAccount)){ return; }
 
         String column = inputString("What do you want to edit (Username/Password/Authorization)?:", new String[]{"Username", "Password", "Authorization"});
+
+        if(isNull(column)) return;
 
         switch(column){
             case "Prefix":
