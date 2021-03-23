@@ -49,18 +49,13 @@ public class WaitingList {
             statement.executeUpdate(sql1);
 
             for(Child c : waitingList) {
-                String sql2 = String.format("INSERT INTO roskildedaycare1.waitinglist (ChildName, ChildSurname, DateOfBirth, Sex, EntryDate, FK_Group, ActivityStatus, PaymentDate, PaymentPeriod, PaymentStatus, FK_Parent1, FK_Parent2)" +
-                                "VALUES ('%s', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%d', '%s', '%d', '%d')",
+                String sql2 = String.format("INSERT INTO roskildedaycare1.waitinglist (ChildName, ChildSurname, DateOfBirth, Sex, JoinDate, FK_Parent1, FK_Parent2)" +
+                                "VALUES ('%s', '%s', '%s', '%s', '%s', '%d', '%d')",
                         c.getName(),
                         c.getSurname(),
                         c.getDateOfBirth(),
                         c.getSex(),
                         c.getEntryDate(),
-                        GroupList.locateID(statement, c.getGroup()),
-                        c.getActivityStatus(),
-                        c.getPaymentDate(),
-                        c.getPaymentPeriod(),
-                        c.getPaymentStatus(),
                         ParentList.locateID(statement, c.getParent1()),
                         ParentList.locateID(statement, c.getParent2()));
 

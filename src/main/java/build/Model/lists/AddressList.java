@@ -80,11 +80,8 @@ public class AddressList {
                 address.getCareOfSurname());
         try{
             ResultSet rs = statement.executeQuery(sql);
-            if(rs == null){
-                return -1; //if no address is found, dont bother
-            }
 
-            return rs.getInt("PK_Address");
+            if(rs.next()) return rs.getInt("PK_Address");
         }
         catch (SQLException e){
             e.printStackTrace();

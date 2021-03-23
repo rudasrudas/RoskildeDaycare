@@ -112,7 +112,8 @@ public class View {
             Daycare.user = account;
             viewMainMenu();
         }
-        else viewLoginMenu();
+
+        viewLoginMenu();
     }
 
     public static void logOut(){
@@ -121,7 +122,7 @@ public class View {
 
         Daycare.model.saveModel(Daycare.statement);
 
-        System.exit(0); //Breaking the loop
+        viewLoginMenu();
     }
 
     public static void viewMainMenu(){
@@ -177,6 +178,7 @@ public class View {
     public static void viewUpdateMenu(){
         String[] actions = {
                 "Accept child",
+                "Register payment",
                 "Update child information",
                 "Update guardian information",
                 "Update teacher information",
@@ -184,18 +186,19 @@ public class View {
                 "Update account information",
                 "Return"};
 
-        int[] accessLevels = {1, 2, 2, 0, 0, 0, 2};
+        int[] accessLevels = {1, 1, 2, 2, 0, 0, 0, 2};
 
         clearScreen();
 
         switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
             case 0 -> Daycare.updateController.acceptChild();
-            case 1 -> Daycare.updateController.updateChild();
-            case 2 -> Daycare.updateController.updateParent();
-            case 3 -> Daycare.updateController.updateTeacher();
-            case 4 -> Daycare.updateController.updateGroup();
-            case 5 -> Daycare.updateController.updateAccount();
-            case 6 -> viewMainMenu();
+            case 1 -> Daycare.updateController.registerPayment();
+            case 2 -> Daycare.updateController.updateChild();
+            case 3 -> Daycare.updateController.updateParent();
+            case 4 -> Daycare.updateController.updateTeacher();
+            case 5 -> Daycare.updateController.updateGroup();
+            case 6 -> Daycare.updateController.updateAccount();
+            case 7 -> viewMainMenu();
         }
     }
 

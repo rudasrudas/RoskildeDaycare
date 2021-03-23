@@ -42,7 +42,7 @@ public class BankInfoList {
 
             for(BankInfo b : bankInfoList) {
                 String sql2 = String.format("INSERT INTO roskildedaycare1.bankinfo (BankName, AccountName, AccountSurname, AccountNumber, RegNumber, KontoNumber)" +
-                                "VALUES ('%s', '%s', '%'s, '%d', '%d', '%d')",
+                                "VALUES ('%s', '%s', '%s', '%d', '%d', '%d')",
                         b.getBankName(),
                         b.getAccountName(),
                         b.getAccountSurname(),
@@ -78,11 +78,8 @@ public class BankInfoList {
                 bankInfo.getKontoNumber());
         try{
             ResultSet rs = statement.executeQuery(sql);
-            if(rs == null){
-                return -1; //if no bankinfo is found, dont bother
-            }
 
-            return rs.getInt("PK_BankInfo");
+            if(rs.next())return rs.getInt("PK_BankInfo");
         }
         catch (SQLException e){
             e.printStackTrace();

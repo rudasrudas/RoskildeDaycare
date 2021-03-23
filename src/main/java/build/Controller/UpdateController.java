@@ -49,7 +49,7 @@ public class UpdateController extends Controller{
                 child.setActivityStatus(status);
                 break;
             default:
-                System.out.println("Unrecognized method, exiting");
+                errorMessage("Unrecognized method, exiting");
                 break;
         }
 
@@ -87,7 +87,7 @@ public class UpdateController extends Controller{
                 child.setSex(sex);
                 break;
             default:
-                System.out.println("Unrecognized method, exiting");
+                errorMessage("Unrecognized method, exiting");
                 break;
         }
 
@@ -146,7 +146,7 @@ public class UpdateController extends Controller{
                 parent.setEmail(email);
                 break;
             default:
-                System.out.println("Unrecognized method, exiting");
+                errorMessage("Unrecognized method, exiting");
                 break;
         }
 
@@ -189,7 +189,7 @@ public class UpdateController extends Controller{
                 teacher.setEmail(email);
                 break;
             default:
-                System.out.println("Unrecognized method, exiting");
+                errorMessage("Unrecognized method, exiting");
                 break;
         }
 
@@ -222,7 +222,7 @@ public class UpdateController extends Controller{
                 userAccount.setAuthorisation(authorization);
                 break;
             default:
-                System.out.println("Unrecognized method, exiting");
+                errorMessage("Unrecognized method, exiting");
                 break;
         }
 
@@ -238,8 +238,29 @@ public class UpdateController extends Controller{
 
         Daycare.model.getChildList().add(child);
         Daycare.model.getWaitingList().remove(child);
+        child.setActivityStatus("Active");
 
         successMessage("Child has been removed from the waiting list and added to the active list.");
+    }
+
+    public static void registerPayment(){
+        View.renderBlock("- Registering a payment -");
+
+        Child child = Daycare.model.getChildList().select(Daycare.scanner);
+
+        if(isNull(child)) return;
+
+        String date = inputDate("Payment date: ");
+        int period = inputInt("Payment period in days: ");
+        String status = inputString("(Paid/Unpaid)?: ", new String[]{"Paid", "Unpaid"});
+
+        if(isNull(date) || isNull(period) || isNull(status)) return;
+
+        child.setPaymentDate(date);
+        child.setPaymentPeriod(period);
+        child.setPaymentStatus(status);
+
+        successMessage("Payment registered");
     }
 
 }
