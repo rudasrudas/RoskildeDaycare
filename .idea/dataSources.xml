@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@den1.mysql6.gear.host" uuid="8dcfa4a9-ccf7-4d46-bf17-c8033d564727">
+    <data-source source="LOCAL" name="Roskilde Daycare" uuid="b06df530-2a8e-4a23-b9fb-d7141212713c">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://den1.mysql6.gear.host:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://den1.mysql6.gear.host :3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
