@@ -46,13 +46,14 @@ public class TeacherList {
                         t.getPrefix(),
                         t.getName(),
                         t.getSurname(),
-                        GroupList.locateID(statement, t.getGroup()),
+                        (t.getGroup() == null ? null : t.getGroup().getId()),
                         t.getPhoneNumber(),
                         t.getEmail(),
-                        AddressList.locateID(statement, t.getAddress()),
-                        BankInfoList.locateID(statement, t.getBankInfo()));
+                        (t.getAddress() == null ? null : t.getAddress()),
+                        (t.getBankInfo() == null ? null : t.getBankInfo()));
 
-                statement.executeUpdate(sql2);
+                int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
+                t.setId(id);
             }
         }
         catch(SQLException e){

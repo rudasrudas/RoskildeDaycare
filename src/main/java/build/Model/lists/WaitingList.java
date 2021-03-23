@@ -56,10 +56,11 @@ public class WaitingList {
                         c.getDateOfBirth(),
                         c.getSex(),
                         c.getEntryDate(),
-                        ParentList.locateID(statement, c.getParent1()),
-                        ParentList.locateID(statement, c.getParent2()));
+                        (c.getParent1() == null ? null : c.getParent1().getId()),
+                        (c.getParent2() == null ? null : c.getParent2().getId()));
 
-                statement.executeUpdate(sql2);
+                int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
+                c.setId(id);
             }
         }
         catch(SQLException e){

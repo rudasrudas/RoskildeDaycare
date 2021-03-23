@@ -55,7 +55,8 @@ public class AddressList {
                         a.getCareOfName(),
                         a.getCareOfSurname());
 
-                statement.executeUpdate(sql2);
+                int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
+                a.setId(id);
             }
         }
         catch(SQLException e){

@@ -50,7 +50,8 @@ public class BankInfoList {
                         b.getRegNumber(),
                         b.getKontoNumber());
 
-                statement.executeUpdate(sql2);
+                int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
+                b.setId(id);
             }
         }
         catch(SQLException e){

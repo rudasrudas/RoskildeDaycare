@@ -4,7 +4,8 @@ import build.Daycare;
 import build.Model.data.*;
 import build.View.View;
 
-import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class UpdateController extends Controller{
 
@@ -252,6 +253,8 @@ public class UpdateController extends Controller{
 
         Daycare.model.getChildList().add(child);
         Daycare.model.getWaitingList().remove(child);
+
+        child.setEntryDate(new SimpleDateFormat("yyy-MM-dd").format(new Date()));
         child.setActivityStatus("Active");
 
         successMessage("Child has been removed from the waiting list and added to the active list.");

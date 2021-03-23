@@ -53,9 +53,10 @@ public class ParentList {
                         p.getRelationship(),
                         p.getPhoneNumber(),
                         p.getEmail(),
-                        AddressList.locateID(statement, p.getAddress()));
+                        (p.getAddress() == null ? null : p.getAddress().getId()));
 
-                statement.executeUpdate(sql2);
+                int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
+                p.setId(id);
             }
         }
         catch(SQLException e){

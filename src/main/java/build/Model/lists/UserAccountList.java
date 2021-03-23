@@ -43,7 +43,8 @@ public class UserAccountList {
                         u.getPassword(),
                         u.getAuthorisation());
 
-                statement.executeUpdate(sql2);
+                int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
+                u.setId(id);
             }
         }
         catch(SQLException e){

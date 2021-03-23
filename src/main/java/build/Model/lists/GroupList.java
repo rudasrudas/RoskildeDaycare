@@ -36,7 +36,8 @@ public class GroupList {
                                 "VALUES ('%s')",
                         g.getGroupName());
 
-                statement.executeUpdate(sql2);
+                int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
+                g.setId(id);
             }
         }
         catch(SQLException e){
