@@ -237,12 +237,11 @@ public class View {
 
         switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
             case 0 -> Daycare.displayController.displayChild();
-            //case 1 -> Daycare.updateController.updateChild();
-            //case 2 -> Daycare.updateController.updateGuardian();
-            //case 3 -> Daycare.updateController.updateTeacher();
-            //case 4 -> Daycare.updateController.updateGroup();
-            //case 5 -> Daycare.updateController.updateUser();
-            //case 6 -> viewMainMenu();
+            case 1 -> Daycare.displayController.displayGuardian();
+            case 2 -> Daycare.displayController.displayGroup();
+            case 3 -> Daycare.displayController.displayTeacher();
+            case 4 -> Daycare.displayController.displayWaitingList();
+            case 6 -> viewMainMenu();
         }
     }
 }
