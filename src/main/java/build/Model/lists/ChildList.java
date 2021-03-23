@@ -119,4 +119,13 @@ public class ChildList {
 
         return childList.get(index);
     }
+
+    public String childrenInGroup(Group group){
+        String result = "";
+        for(Child c : childList){
+            if(c.getGroup() == group) result += c + "\n";
+        }
+
+        return result;
+    }
 }

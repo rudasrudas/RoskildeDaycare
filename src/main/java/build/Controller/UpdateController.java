@@ -160,7 +160,7 @@ public class UpdateController extends Controller{
 
         if(isNull(teacher)){ return; }
 
-        String column = inputString("What do you want to edit (Prefix/Name/Surname/PhoneNumber/Email)?:", new String[]{"Prefix", "Name", "Surname", "PhoneNumber", "Email"});
+        String column = inputString("What do you want to edit (Prefix/Name/Surname/Group/PhoneNumber/Email)?:", new String[]{"Prefix", "Name", "Surname", "Group", "PhoneNumber", "Email"});
 
         switch(column){
             case "Prefix":
@@ -178,6 +178,10 @@ public class UpdateController extends Controller{
                 if(isNull(surname)){ return; }
                 teacher.setSurname(surname);
                 break;
+            case "Group":
+                Group group = Daycare.model.getGroupList().select(Daycare.scanner);
+                teacher.setGroup(group);
+                break;
             case "Phone Number":
                 String phoneNumber = inputString("New Phone Number: ");
                 if(isNull(phoneNumber)){ return; }
@@ -193,7 +197,7 @@ public class UpdateController extends Controller{
                 break;
         }
 
-        successMessage("Child information updated in the waiting list.");
+        successMessage("Teacher information updated.");
     }
 
     public static void updateAccount(){
@@ -217,7 +221,7 @@ public class UpdateController extends Controller{
                 userAccount.setPassword(password);
                 break;
             case "Authorization":
-                int authorization = inputInt("New Authorization level: ");
+                int authorization = inputInt("New Authorization level (1 -- Administrator, 2 -- Teacher): ", new int[]{1, 2});
                 if(isNull(authorization)){ return; }
                 userAccount.setAuthorisation(authorization);
                 break;

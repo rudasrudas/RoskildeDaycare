@@ -103,7 +103,13 @@ public class DisplayController extends Controller {
 
         System.out.println("Group Name: " + group.getGroupName());
 
-        System.out.println("\nPress Enter to return...");
+        System.out.println("\nGroup teachers: ");
+        System.out.println(Daycare.model.getTeacherList().teachersInGroup(group));
+
+        System.out.println("\nChildren assigned to the group: ");
+        System.out.println(Daycare.model.getChildList().childrenInGroup(group));
+
+        System.out.println("Press Enter to return...");
         Daycare.scanner.nextLine();
     }
 

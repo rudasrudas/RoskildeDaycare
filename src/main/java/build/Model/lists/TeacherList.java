@@ -100,4 +100,13 @@ public class TeacherList {
 
         return teacherList.get(index);
     }
+
+    public String teachersInGroup(Group group){
+        String result = "";
+        for(Teacher c : teacherList){
+            if(c.getGroup() == group) result += c + "\n";
+        }
+
+        return result;
+    }
 }
