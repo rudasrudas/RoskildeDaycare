@@ -100,9 +100,6 @@ public class ParentList {
                 parent.getEmail());
         try{
             ResultSet rs = statement.executeQuery(sql);
-            if(rs == null){
-                return -1; //if no parent is found, dont bother
-            }
 
             if(rs.next()) return rs.getInt("PK_Parent");
         }

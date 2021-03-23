@@ -64,11 +64,8 @@ public class GroupList {
                 group.getGroupName());
         try{
             ResultSet rs = statement.executeQuery(sql);
-            if(rs == null){
-                return -1; //if no group is found, dont bother
-            }
 
-            return rs.getInt("PK_Class");
+            if(rs.next())return rs.getInt("PK_Class");
         }
         catch (SQLException e){
             e.printStackTrace();

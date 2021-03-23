@@ -31,7 +31,7 @@ public class DisplayController extends Controller {
 
         System.out.println("Payment information: ");
         if(child.getPaymentDate() == null){
-            System.out.println("Not paid");
+            System.out.println("\tNot paid");
         }
         else {
             System.out.println("\tdate: " + child.getPaymentDate());
@@ -45,9 +45,9 @@ public class DisplayController extends Controller {
         }
         else {
             System.out.println("\t" + child.getParent1().getPrefix() + ". " + child.getParent1().getName() + " " + child.getParent1().getSurname() + "(" + child.getParent1().getRelationship() + ")");
-            System.out.println("\tPhone: " + child.getParent1().getPhoneNumber() + "\n\t Email: " + child.getParent1().getEmail());
-            if(child.getParent1().getAddress() != null)
-                System.out.println("\t" + child.getParent1().getAddress().toString());
+            System.out.println("\tPhone: " + child.getParent1().getPhoneNumber() + "\n\tEmail: " + child.getParent1().getEmail());
+            try{ System.out.println("\tAddress: " + child.getParent1().getAddress().toString()); }
+            catch(Exception e){ }
         }
 
         System.out.println("Second guardian: ");
@@ -176,9 +176,9 @@ public class DisplayController extends Controller {
         }
         else {
             System.out.println("\t" + child.getParent2().getPrefix() + ". " + child.getParent2().getName() + " " + child.getParent2().getSurname() + "(" + child.getParent2().getRelationship() + ")");
-            System.out.println("\t Phone: " + child.getParent2().getPhoneNumber() + "\n\t Email: " + child.getParent2().getEmail());
-            if(child.getParent1().getAddress() != null)
-                System.out.println("\t" + child.getParent2().getAddress().toString());
+            System.out.println("\tPhone: " + child.getParent2().getPhoneNumber() + "\n\tEmail: " + child.getParent2().getEmail());
+            try{ System.out.println("\tAddress: " + child.getParent2().getAddress().toString()); }
+            catch(Exception e){ }
         }
 
         System.out.println("\nPress Enter to return...");

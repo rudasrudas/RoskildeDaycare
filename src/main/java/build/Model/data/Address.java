@@ -33,7 +33,8 @@ public class Address {
 
 
     public String toString() {
-        return streetName + " " +
+        return  city + " " +
+                streetName + " " +
                 streetNumber + " " +
                 floorNumber + "," +
                 apartmentNumber + ", " +
