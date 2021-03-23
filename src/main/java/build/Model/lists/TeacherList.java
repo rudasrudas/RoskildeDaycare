@@ -49,8 +49,8 @@ public class TeacherList {
                         (t.getGroup() == null ? -1 : t.getGroup().getId()),
                         t.getPhoneNumber(),
                         t.getEmail(),
-                        (t.getAddress() == null ? -1 : t.getAddress()),
-                        (t.getBankInfo() == null ? -1 : t.getBankInfo()));
+                        (t.getAddress() == null ? -1 : t.getAddress().getId()),
+                        (t.getBankInfo() == null ? -1 : t.getBankInfo().getId()));
 
                 int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
                 t.setId(id);
