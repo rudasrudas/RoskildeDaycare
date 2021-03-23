@@ -156,10 +156,11 @@ public class View {
                 "Add guardian",
                 "Add teacher",
                 "Add address",
+                "Create group",
                 "Add bank credentials",
                 "Return"};
 
-        int[] accessLevels = {0, 1, 2, 1, 0, 1, 0, 2};
+        int[] accessLevels = {0, 1, 2, 1, 0, 1, 0, 0, 2};
 
         clearScreen();
 
@@ -170,8 +171,9 @@ public class View {
             case 3 -> Daycare.addController.addGuardian();
             case 4 -> Daycare.addController.addTeacher();
             case 5 -> Daycare.addController.addAddress();
-            case 6 -> Daycare.addController.addBankInfo();
-            case 7 -> viewMainMenu();
+            case 6 -> Daycare.addController.addGroup();
+            case 7 -> Daycare.addController.addBankInfo();
+            case 8 -> viewMainMenu();
         }
     }
 
@@ -240,10 +242,10 @@ public class View {
 
         switch(createMenuInput(actions, accessLevels, Daycare.user.getAuthorisation())){
             case 0 -> Daycare.displayController.displayChild();
-            case 1 -> Daycare.displayController.displayGuardian();
-            case 2 -> Daycare.displayController.displayGroup();
-            case 3 -> Daycare.displayController.displayTeacher();
-            case 4 -> Daycare.displayController.displayWaitingList();
+            case 1 -> Daycare.displayController.displayWaitingList();
+            case 2 -> Daycare.displayController.displayGuardian();
+            case 3 -> Daycare.displayController.displayGroup();
+            case 4 -> Daycare.displayController.displayTeacher();
             case 6 -> viewMainMenu();
         }
     }
