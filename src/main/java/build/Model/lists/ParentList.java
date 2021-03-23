@@ -53,7 +53,7 @@ public class ParentList {
                         p.getRelationship(),
                         p.getPhoneNumber(),
                         p.getEmail(),
-                        (p.getAddress() == null ? null : p.getAddress().getId()));
+                        (p.getAddress() == null ? -1 : p.getAddress().getId()));
 
                 int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
                 p.setId(id);

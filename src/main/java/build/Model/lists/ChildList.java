@@ -56,13 +56,13 @@ public class ChildList {
                         c.getDateOfBirth(),
                         c.getSex(),
                         c.getEntryDate(),
-                        (c.getGroup() == null ? null : c.getGroup().getId()),
+                        (c.getGroup() == null ? -1 : c.getGroup().getId()),
                         c.getActivityStatus(),
                         c.getPaymentDate(),
                         c.getPaymentPeriod(),
                         c.getPaymentStatus(),
-                        (c.getParent1() == null ? null : c.getParent1().getId()),
-                        (c.getParent2() == null ? null : c.getParent2().getId()));
+                        (c.getParent1() == null ? -1 : c.getParent1().getId()),
+                        (c.getParent2() == null ? -1 : c.getParent2().getId()));
 
                 int id = statement.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
                 c.setId(id);
