@@ -16,9 +16,12 @@ public class Teacher {
         this.id = id;
         this.prefix = prefix;
         this.name = name;
+        this.group = group;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.address = address;
+        this.bankInfo = bankInfo;
     }
 
     public int getId() {
