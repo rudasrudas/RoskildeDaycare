@@ -226,15 +226,15 @@ public class UpdateController extends Controller{
         if(isNull(column)) return;
 
         switch(column){
-            case "Prefix":
+            case "Username":
                 String username = inputString("New Username: ");
                 if(isNull(username)){ return; }
                 userAccount.setUsername(username);
                 break;
-            case "":
+            case "Password":
                 String password = inputString("New Password: ");
                 if(isNull(password)){ return; }
-                userAccount.setPassword(password);
+                userAccount.setPassword(hash(password));
                 break;
             case "Authorization":
                 int authorization = inputInt("New Authorization level (1 -- Administrator, 2 -- Teacher): ", new int[]{1, 2});
@@ -246,7 +246,7 @@ public class UpdateController extends Controller{
                 break;
         }
 
-        successMessage("Child information updated in the waiting list.");
+        successMessage("Account updated.");
     }
 
     public static void acceptChild(){
