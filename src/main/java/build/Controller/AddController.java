@@ -102,8 +102,8 @@ public class AddController extends Controller {
         View.renderBlock("- Adding a guardian -");
 
         String parentPrefix = inputString("Prefix: ");
-        String parentName = inputString("Parent name: ");
-        String parentSurname = inputString("Parent surname: ");
+        String parentName = inputString("Guardian name: ");
+        String parentSurname = inputString("Guardian surname: ");
         String relationship = inputString("Relationship to child: ");
         String phoneNumber = inputString("Phone Number: ");
         String email = inputString("Email Address: ");

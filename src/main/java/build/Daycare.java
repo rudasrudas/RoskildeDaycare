@@ -38,9 +38,6 @@ public class Daycare {
 
         view = new View();
         view.viewLoginMenu();
-
-        model.saveModel(statement);
-
     }
 
     public static Statement connectDB(String url, String user, String password) throws SQLException {

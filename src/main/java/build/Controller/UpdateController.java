@@ -167,7 +167,7 @@ public class UpdateController extends Controller{
 
         if(isNull(teacher)){ return; }
 
-        String column = inputString("What do you want to edit (Prefix/Name/Surname/Group/PhoneNumber/Email)?:", new String[]{"Prefix", "Name", "Surname", "Group", "PhoneNumber", "Email"});
+        String column = inputString("What do you want to edit (Prefix/Name/Surname/Group/BankInfo/PhoneNumber/Email)?:", new String[]{"Prefix", "Name", "Surname", "Group", "BankInfo", "PhoneNumber", "Email"});
 
         if(isNull(column)) return;
 
@@ -190,6 +190,11 @@ public class UpdateController extends Controller{
             case "Group":
                 Group group = Daycare.model.getGroupList().select(Daycare.scanner);
                 teacher.setGroup(group);
+                break;
+            case "BankInfo":
+                BankInfo bankInfo = Daycare.model.getBankInfoList().select(Daycare.scanner);
+                if(isNull(bankInfo)){ return; }
+                teacher.setBankInfo(bankInfo);
                 break;
             case "Phone Number":
                 String phoneNumber = inputString("New Phone Number: ");

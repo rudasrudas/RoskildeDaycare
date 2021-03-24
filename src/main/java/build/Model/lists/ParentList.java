@@ -118,7 +118,7 @@ public class ParentList {
 
         do {
             try {
-                System.out.println("Please select a parent: ");
+                System.out.println("Please select a guardian: ");
                 System.out.println(toString());
                 input = scanner.nextLine();
 

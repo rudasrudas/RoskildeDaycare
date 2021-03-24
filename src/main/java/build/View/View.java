@@ -2,6 +2,7 @@ package build.View;
 
 import build.Daycare;
 import build.Controller.Controller;
+import build.Model.Model;
 import build.Model.data.UserAccount;
 
 import java.sql.*;
@@ -110,6 +111,7 @@ public class View {
         UserAccount account = Controller.logIn();
         if(account != null) {
             Daycare.user = account;
+            Daycare.model = new Model(Daycare.statement);
             viewMainMenu();
         }
 
@@ -173,7 +175,7 @@ public class View {
             case 5 -> Daycare.addController.addAddress();
             case 6 -> Daycare.addController.addGroup();
             case 7 -> Daycare.addController.addBankInfo();
-            case 8 -> viewMainMenu();
+            //case 8 -> viewMainMenu();
         }
     }
 
@@ -200,7 +202,7 @@ public class View {
             case 4 -> Daycare.updateController.updateTeacher();
             case 5 -> Daycare.updateController.updateGroup();
             case 6 -> Daycare.updateController.updateAccount();
-            case 7 -> viewMainMenu();
+            //case 7 -> viewMainMenu();
         }
     }
 
@@ -223,7 +225,7 @@ public class View {
             case 2 -> Daycare.removeController.removeGuardian();
             case 3 -> Daycare.removeController.removeGroup();
             case 4 -> Daycare.removeController.removeTeacher();
-            case 5 -> viewMainMenu();
+            //case 5 -> viewMainMenu();
         }
     }
 
@@ -246,7 +248,7 @@ public class View {
             case 2 -> Daycare.displayController.displayGuardian();
             case 3 -> Daycare.displayController.displayGroup();
             case 4 -> Daycare.displayController.displayTeacher();
-            case 6 -> viewMainMenu();
+            //case 6 -> viewMainMenu();
         }
     }
 }
