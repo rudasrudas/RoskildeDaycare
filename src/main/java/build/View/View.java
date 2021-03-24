@@ -192,6 +192,8 @@ public class View {
             case 7 -> Daycare.addController.addBankInfo();
             //case 8 -> viewMainMenu();
         }
+
+        Daycare.model.saveModel(Daycare.statement);
     }
 
     public static void viewUpdateMenu(){
@@ -219,6 +221,8 @@ public class View {
             case 6 -> Daycare.updateController.updateAccount();
             //case 7 -> viewMainMenu();
         }
+
+        Daycare.model.saveModel(Daycare.statement);
     }
 
     public static void viewRemoveMenu(){
@@ -242,6 +246,8 @@ public class View {
             case 4 -> Daycare.removeController.removeTeacher();
             //case 5 -> viewMainMenu();
         }
+
+        Daycare.model.saveModel(Daycare.statement);
     }
 
     public static void viewDisplayMenu(){
@@ -265,5 +271,7 @@ public class View {
             case 4 -> Daycare.displayController.displayTeacher();
             //case 6 -> viewMainMenu();
         }
+
+        Daycare.model.saveModel(Daycare.statement);
     }
 }

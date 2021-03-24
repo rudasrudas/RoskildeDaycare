@@ -136,6 +136,7 @@ public abstract class Controller {
         String username = inputString("Username: ");
         String password = inputString("Password: ");
 
+        if(username == null || password == null) return null;
         return Daycare.model.getUserAccountList().findAccount(username, password);
     }
 
