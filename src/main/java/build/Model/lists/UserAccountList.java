@@ -60,6 +60,14 @@ public class UserAccountList {
         return null;
     }
 
+    public boolean containsUsername(String username){
+        for(UserAccount ua : userAccountList){
+            if(ua.getUsername() == username) return true;
+        }
+
+        return false;
+    }
+
     public void add(UserAccount userAccount){
         userAccountList.add(userAccount);
     }

@@ -78,8 +78,16 @@ public class AddController extends Controller {
         String password = hash(inputString("Password: "));
         int authorisation = inputInt("Authorisation level (1 -- Administrator, 2 -- Teacher): ", new int[]{1, 2});
 
-        if (username.length() < 6 || password.length() < 6 || authorisation < 0 || authorisation > 2) {
-            errorMessage("Input is incorrect");
+        if(username.length() < 6 || password.length() < 6){
+            errorMessage("Username and password must be at least 6 digits long.");
+            return;
+        }
+        if(authorisation < 0 || authorisation > 2){
+            errorMessage("Authorisation level is invalid.");
+            return;
+        }
+        if(Daycare.model.getUserAccountList().containsUsername(username)){
+            errorMessage("Username already exists.");
             return;
         }
 
