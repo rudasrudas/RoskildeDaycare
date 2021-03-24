@@ -111,7 +111,15 @@ public class View {
         UserAccount account = Controller.logIn();
         if(account != null) {
             Daycare.user = account;
-            //Daycare.model = new Model(Daycare.statement);
+
+            try {
+                Daycare.statement = Daycare.connectDB();
+                Daycare.model = new Model(Daycare.statement);
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+
             viewMainMenu();
         }
 
@@ -123,6 +131,13 @@ public class View {
         renderBlock("- Logging out. Have a nice day! -");
 
         Daycare.model.saveModel(Daycare.statement);
+
+        try {
+            Daycare.statement.close();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
 
         viewLoginMenu();
     }

@@ -28,11 +28,8 @@ public class Daycare {
     }
 
     public Daycare() throws SQLException{
-        String url = "jdbc:mysql://den1.mysql6.gear.host:3306";
-        String user = "roskildedaycare1";
-        String password = "Kd9el?c~CtQE";
 
-        statement = connectDB(url, user, password);
+        statement = connectDB();
         model = new Model(statement);
         scanner = new Scanner(System.in);
 
@@ -40,8 +37,8 @@ public class Daycare {
         view.viewLoginMenu();
     }
 
-    public static Statement connectDB(String url, String user, String password) throws SQLException {
-        Connection connection = DriverManager.getConnection(url, user, password);
+    public static Statement connectDB() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://den1.mysql6.gear.host:3306", "roskildedaycare1", "Kd9el?c~CtQE");
         Statement statement = connection.createStatement();
         return statement;
     }
