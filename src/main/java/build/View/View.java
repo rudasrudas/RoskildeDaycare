@@ -111,7 +111,7 @@ public class View {
         UserAccount account = Controller.logIn();
         if(account != null) {
             Daycare.user = account;
-            Daycare.model = new Model(Daycare.statement);
+            //Daycare.model = new Model(Daycare.statement);
             viewMainMenu();
         }
 
