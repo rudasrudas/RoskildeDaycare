@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RoskildeProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RoskildeProject_jar</output-path>
+    <root id="archive" name="RoskildeProject.jar">
+      <element id="module-output" name="RoskildeProject" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/guava/guava/19.0/guava-19.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.22/mysql-connector-java-8.0.22.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.11/commons-codec-1.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

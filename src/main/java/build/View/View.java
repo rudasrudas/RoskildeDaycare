@@ -244,7 +244,6 @@ public class View {
             case 2 -> Daycare.removeController.removeGuardian();
             case 3 -> Daycare.removeController.removeGroup();
             case 4 -> Daycare.removeController.removeTeacher();
-            //case 5 -> viewMainMenu();
         }
 
         Daycare.model.saveModel(Daycare.statement);
